@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>ICLNet² Credit Report Prototype</title>
-  <meta name="description" content="ICLNet² — Blue Bull Capital's credit infrastructure prototype. Click start, watch the 4-step pipeline, get a TU-format report.">
+  <meta name="description" content="ICLNet² — Blue Bull Capital's credit infrastructure prototype. Pick a subject, watch the 4-step pipeline, get a TU-format report.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#060B1A">
   <link rel="icon" type="image/jpeg" href="assets/logo-240.jpg">
@@ -986,6 +986,231 @@ h3 { font-size: 20px; line-height: 1.3; }
   padding: 30px 0; border-top: 1px solid var(--line);
   font-size: 12.5px; color: var(--ink-3);
 }
+
+/* ============================================================
+   Input section: type toggle + sample cards + custom form
+   ============================================================ */
+.input-sec {
+  padding: 60px var(--pad) 80px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.input-sec .container { max-width: 1080px; }
+
+.input-type {
+  display: inline-flex; gap: 0;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  padding: 4px;
+  margin: 0 auto 40px;
+  display: flex;
+  width: fit-content;
+}
+.type-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 24px;
+  background: transparent; border: none;
+  color: var(--ink-3); border-radius: 999px;
+  font-family: inherit; font-size: 14px;
+  transition: all 0.2s var(--ease);
+  cursor: pointer;
+}
+.type-btn .en {
+  font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.type-btn:hover { color: var(--ink); }
+.type-btn.active {
+  background: var(--ink); color: var(--bg);
+}
+.type-btn.active .en { color: var(--ink-3); }
+
+.input-section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+}
+.input-section-head h3 {
+  font-size: 13px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+.input-section-head .hint { font-size: 12.5px; color: var(--ink-3); }
+
+.sample-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 32px;
+}
+@media (max-width: 980px) { .sample-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .sample-grid { grid-template-columns: 1fr; } }
+
+.sample-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  position: relative;
+  text-align: left;
+  font-family: inherit; color: var(--ink);
+  display: flex; flex-direction: column; gap: 8px;
+  min-height: 180px;
+}
+.sample-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  background: var(--bg-3);
+}
+.sample-card.selected {
+  border-color: var(--gold);
+  background: var(--bg-3);
+  box-shadow: 0 0 0 2px var(--gold-soft);
+}
+.sample-card.selected::after {
+  content: "✓";
+  position: absolute; top: 12px; right: 12px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gold); color: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+}
+.sample-card-ix {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--gold); letter-spacing: 0.15em;
+}
+.sample-card-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--bg-3); border: 1px solid var(--line-2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--bull);
+}
+.sample-card.selected .sample-card-icon { background: var(--gold-soft); color: var(--gold); }
+.sample-card-name {
+  font-size: 15px; font-weight: 600; color: var(--ink);
+  margin-top: 4px;
+}
+.sample-card-cn {
+  font-size: 12.5px; color: var(--ink-2);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.sample-card-en {
+  font-size: 11px; color: var(--ink-3);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.03em;
+  margin-top: auto;
+}
+.sample-card-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 8px; padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.sample-card-grade {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600;
+}
+.grade-A, .grade-B { color: var(--green); }
+.grade-C, .grade-D { color: var(--gold); }
+.grade-E, .grade-F { color: var(--red-2); }
+.grade-J { color: var(--red); }
+
+.custom-toggle { margin: 0 0 16px; }
+.custom-toggle .btn { background: transparent; }
+.custom-toggle .chev { transition: transform 0.2s; }
+.custom-toggle.open .chev { transform: rotate(180deg); }
+
+.custom-form {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.form-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 720px) { .form-grid { grid-template-columns: 1fr; } }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 11px; color: var(--ink-3);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-family: 'JetBrains Mono', monospace;
+}
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field select {
+  background: var(--bg);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  color: var(--ink);
+  font-family: inherit; font-size: 14px;
+  width: 100%;
+}
+.form-field input:focus, .form-field select:focus {
+  outline: none; border-color: var(--gold);
+}
+.form-field .slider-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.form-field .slider-row input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none; appearance: none;
+  height: 4px; background: var(--bg-4);
+  border-radius: 999px; outline: none;
+}
+.form-field .slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--gold); cursor: pointer;
+  box-shadow: 0 0 0 4px var(--gold-soft);
+  border: 2px solid var(--bg);
+}
+.form-field .slider-row .val {
+  min-width: 90px; text-align: right;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  color: var(--gold);
+}
+
+.confirm-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  padding: 20px 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  position: sticky; bottom: 16px;
+  z-index: 10;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+.confirm-summary {
+  font-size: 14px; color: var(--ink-2);
+  display: flex; align-items: center; gap: 14px;
+  min-width: 0; flex: 1; min-height: 28px;
+}
+.confirm-summary .muted { color: var(--ink-3); font-size: 13px; }
+.confirm-summary .picked {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px;
+}
+.confirm-summary .picked .nm { font-weight: 600; color: var(--ink); }
+.confirm-summary .picked .ix {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--gold); letter-spacing: 0.1em;
+}
+.confirm-bar .btn-lg { padding: 14px 28px; font-size: 15px; }
+.confirm-bar .btn-primary[disabled] {
+  background: var(--bg-3); color: var(--ink-3); cursor: not-allowed;
+  box-shadow: none;
+}
+.confirm-bar .btn-primary[disabled]:hover { transform: none; box-shadow: none; }
+
 .foot .container {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 16px;
@@ -1191,25 +1416,59 @@ h3 { font-size: 20px; line-height: 1.3; }
       </div>
     </div>
     <h1 class="start-h reveal">
-      點按「開始」<br>
-      跑一次完整信貸報告生成流程
+      選一個信貸查詢對象<br>
+      看 ICLNet² 怎麼產出報告
     </h1>
     <p class="start-sub reveal cjk">
       這是 ICLNet² 的工作原型 — 與環聯 (TU) 香港個人信貸報告的<b>形狀完全相同</b>。
-      點擊下方按鈕，4 道加密閘門會逐一打開，最終產出可審計的信貸報告。
-      所有人名、HKID、電話、地址、賬號都是即時合成的，<b>不對應任何真實個人</b>。
+      先選對象 (個人或機構)、再選樣本或自訂資料，4 道加密閘門會逐一打開，
+      最終產出可審計的信貸報告。<br>
+      <b>所有資料都是即時合成的，不對應任何真實個人或機構。</b>
     </p>
-    <div class="start-cta reveal">
-      <button class="btn btn-primary btn-xl" id="startBtn">
-        ▶ 開始生成信貸報告
-      </button>
-    </div>
-    <div class="start-hint reveal cjk">
-      整個流程約 8 秒 · 可隨時按「重新開始」換一個合成報告
-    </div>
   </div>
 </section>
 
+  <section class="input-sec" id="input">
+    <div class="container">
+      <div class="input-type reveal" role="tablist" aria-label="Subject type">
+        <button class="type-btn active" data-type="individual" role="tab" aria-selected="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+          <span class="cjk">個人</span>
+          <span class="en">Individual</span>
+        </button>
+        <button class="type-btn" data-type="institution" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21V11h6v10"/><path d="M9 15h.01M15 15h.01"/></svg>
+          <span class="cjk">機構</span>
+          <span class="en">Institution</span>
+        </button>
+      </div>
+
+      <div class="input-section-head reveal">
+        <h3 class="cjk">樣本資料 · Sample subjects</h3>
+        <span class="hint cjk">點選任一樣本，或下方自行輸入</span>
+      </div>
+      <div class="sample-grid" id="sampleGrid"></div>
+
+      <div class="custom-toggle reveal">
+        <button class="btn btn-ghost" id="customToggle">
+          <span class="cjk">自行輸入 · Custom input</span>
+          <span class="chev">▾</span>
+        </button>
+      </div>
+      <div class="custom-form" id="customForm" hidden>
+        <div class="form-grid" id="formGrid"></div>
+      </div>
+
+      <div class="confirm-bar reveal">
+        <div class="confirm-summary" id="confirmSummary">
+          <span class="muted cjk">尚未選擇對象</span>
+        </div>
+        <button class="btn btn-primary btn-lg" id="confirmBtn" disabled>
+          <span class="cjk">▶ 開始生成信貸報告</span>
+        </button>
+      </div>
+    </div>
+  </section>
   
 <section class="pipeline" id="pipeline" hidden>
   <div class="container">
@@ -1355,16 +1614,27 @@ h3 { font-size: 20px; line-height: 1.3; }
 
 
 <script>
-// State (declared first to avoid TDZ in later helpers)
+// State (currentReport / currentTab are declared inside credit_report.js)
 let currentLang = 'tw';
 let openccReady = null;
 let tradToSimp = null;
 let demoRunning = false;
 let demoStep = 0;
 
+// User input state
+let currentType = 'individual';
+let currentScenario = null;
+let currentIsCustom = false;
+let customFormData = null;
+
+// ============================================================
+// Sample data
+// ============================================================
+const INDIVIDUAL_SAMPLES = [{"id": "ind-01", "ix": "樣本 01", "name": "陳大文 · MTRC 工程師", "cn": "高信用優質客戶", "en": "Grade-A salaried borrower", "icon": "M3 21V7l9-4 9 4v14M9 21V11h6v10", "tier": "high", "expected_grade": "A", "profile": {"type": "individual", "name": "CHAN TAI MAN", "name_cn": "陳大文", "hkid": "A482716(3)", "dob_year": 1988, "occupation": "MTRC 工程師 · 10 年", "income_hkd": 95000, "loan_amount": 250000, "loan_term_months": 36, "loan_purpose": "個人週轉"}}, {"id": "ind-02", "ix": "樣本 02", "name": "李嘉慧 · 餐飲經營", "cn": "中小企業東主", "en": "SME operator", "icon": "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5", "tier": "mid", "expected_grade": "D", "profile": {"type": "individual", "name": "LEE KA WAI", "name_cn": "李嘉慧", "hkid": "B739284(5)", "dob_year": 1982, "occupation": "餐廳東主 · 6 年", "income_hkd": 55000, "loan_amount": 1200000, "loan_term_months": 24, "loan_purpose": "週轉金"}}, {"id": "ind-03", "ix": "樣本 03", "name": "王曉明 · 跨境大灣區", "cn": "GBA 標準合同", "en": "Cross-border GBA", "icon": "M12 2v20M2 12h20M5 5l14 14M19 5L5 19", "tier": "high", "expected_grade": "B", "profile": {"type": "individual", "name": "WANG XIAO MING", "name_cn": "王曉明", "hkid": "C561928(2)", "dob_year": 1985, "occupation": "深圳科技公司 CEO", "income_hkd": 120000, "loan_amount": 800000, "loan_term_months": 60, "loan_purpose": "香港物業按揭共同借款人"}}, {"id": "ind-04", "ix": "樣本 04", "name": "張子俊 · 應屆畢業", "cn": "薄文件新移民", "en": "Thin-file new arrival", "icon": "M12 14l9-5-9-5-9 5 9 5z", "tier": "low", "expected_grade": "J", "profile": {"type": "individual", "name": "CHEUNG TSZ CHUN", "name_cn": "張子俊", "hkid": "D294817(8)", "dob_year": 2002, "occupation": "Marketing 助理 · 1 年", "income_hkd": 22000, "loan_amount": 60000, "loan_term_months": 12, "loan_purpose": "信用建立"}}];
+const INSTITUTION_SAMPLES = [{"id": "ins-01", "ix": "樣本 01", "name": "順馳物流控股", "cn": "物流倉儲組合", "en": "Logistics portfolio", "icon": "M3 7h18v10H3zM7 7V4h10v3", "tier": "high", "expected_grade": "A", "profile": {"type": "institution", "name": "Shun Chi Logistics Holdings Ltd", "name_cn": "順馳物流控股有限公司", "br_no": "BR-62819403", "industry": "物流倉儲", "years_operating": 14, "annual_revenue_hkd": 280000000, "loan_amount": 25000000, "loan_term_months": 36, "loan_purpose": "車隊擴張"}}, {"id": "ins-02", "ix": "樣本 02", "name": "美心餐飲集團", "cn": "連鎖餐飲組合", "en": "F&B chain portfolio", "icon": "M5 21V8l7-4 7 4v13M9 21v-6h6v6M9 11h.01M15 11h.01", "tier": "mid", "expected_grade": "C", "profile": {"type": "institution", "name": "Maxim's Caterers Ltd", "name_cn": "美心餐飲集團有限公司", "br_no": "BR-71849205", "industry": "餐飲零售", "years_operating": 28, "annual_revenue_hkd": 450000000, "loan_amount": 18000000, "loan_term_months": 24, "loan_purpose": "門市翻新"}}, {"id": "ins-03", "ix": "樣本 03", "name": "新創科技公司", "cn": "初創 · SaaS", "en": "Tech startup", "icon": "M9 4h6v4H9zM5 8h14v12H5z", "tier": "low", "expected_grade": "F", "profile": {"type": "institution", "name": "NovaTech Solutions Ltd", "name_cn": "新創科技有限公司", "br_no": "BR-92184756", "industry": "軟件 / SaaS", "years_operating": 2, "annual_revenue_hkd": 8500000, "loan_amount": 3000000, "loan_term_months": 18, "loan_purpose": "現金流週轉"}}, {"id": "ins-04", "ix": "樣本 04", "name": "某個人信貸組合", "cn": "消費金融 NPL 包", "en": "Consumer NPL pool", "icon": "M3 3h18v18H3zM3 9h18M9 21V9", "tier": "mid", "expected_grade": "D", "profile": {"type": "institution", "name": "Pacific Consumer Finance Pool 2026-A", "name_cn": "太平洋消費金融資產組合 2026-A", "br_no": "POOL-2026-A-014", "industry": "消費金融 NPL", "years_operating": 0, "annual_revenue_hkd": 0, "loan_amount": 48500000, "loan_term_months": 12, "loan_purpose": "資產包收購"}}];
+
 // ============================================================
 // Credit report generator (JS port of credit_sample.py)
-// All data is synthetic. No real PII used anywhere.
 // ============================================================
 
 // ============================================================
@@ -1439,6 +1709,9 @@ function randChoice(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 function randInt(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
 function randFloat(a, b) { return a + Math.random() * (b - a); }
 function pickN(arr, n) { const c = arr.slice(); const out = []; for (let i=0;i<n && c.length;i++) out.push(c.splice(Math.floor(Math.random()*c.length),1)[0]); return out; }
+
+// Active scenario (set by input step). When null, generateReport runs random.
+let activeScenario = null;
 
 function today() { return new Date(); }
 function addDays(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
@@ -1606,6 +1879,14 @@ function generateInquiries() {
 }
 
 function generateScore() {
+  if (activeScenario && activeScenario.tier) {
+    const t = activeScenario.tier;
+    let score;
+    if (t === "high") score = randInt(3300, 3850);
+    else if (t === "mid") score = randInt(2400, 3300);
+    else score = randInt(1100, 2400);
+    return { score, grade: gradeForScore(score), band: t };
+  }
   const r = Math.random();
   const band = r < 0.35 ? "high" : r < 0.85 ? "mid" : "low";
   const score = band === "high" ? randInt(3200, 3850) : band === "mid" ? randInt(2400, 3200) : randInt(1100, 2400);
@@ -1616,6 +1897,27 @@ function generateReport() {
   const { score, grade, band } = generateScore();
   const accounts = generateAccounts(band);
   const inquiries = generateInquiries();
+
+  // Apply scenario profile if set
+  let scenarioName, scenarioHkid, scenarioDob, scenarioPhones, scenarioAddrs;
+  if (activeScenario && activeScenario.profile) {
+    const p = activeScenario.profile;
+    scenarioName = p.name || scenarioName;
+    scenarioHkid = p.hkid || scenarioHkid;
+    // Build a DOB from year
+    if (p.dob_year) scenarioDob = new Date(p.dob_year, randInt(0, 11), randInt(1, 28));
+    // Add the scenario loan as a recent inquiry
+    if (p.loan_amount) {
+      inquiries.unshift({
+        lender: "ICLNet² Decision Engine",
+        date: today(),
+        type: p.loan_purpose || "Loan application",
+        amount: p.loan_amount,
+        purpose: "Live application",
+        kind: "application",
+      });
+    }
+  }
   const active = accounts.filter(a => a.active);
   const totalBalance = active.reduce((s, a) => s + a.balance, 0);
   const totalLimit = active.reduce((s, a) => s + a.limit, 0);
@@ -1625,7 +1927,10 @@ function generateReport() {
   const overdue = active.filter(a => a.balance > a.limit * 0.95).length;
 
   let scoreFactor;
-  if (utilization > 0.7 || band === "low") {
+  if (activeScenario && activeScenario.profile && activeScenario.profile.loan_amount > 1000000) {
+    // Large loan applications
+    scoreFactor = "本次查詢涉及 " + (activeScenario.profile.loan_amount / 1e6).toFixed(1) + "M 港幣的貸款申請。建議信貸提供機構根據申請人還款能力與抵押品覆蓋率作進一步盡職審查。";
+  } else if (utilization > 0.7 || band === "low") {
     scoreFactor = "你大部份信貸賬戶的信貸額使用度偏高。建議保持所有信貸賬戶的信貸額使用度不超過 50%，有助建立良好的信貸習慣，或可為你的信貸評分帶來正面影響。";
   } else if (band === "high") {
     scoreFactor = "你的信貸歷史長度、信貸使用率及還款紀錄整體良好。維持目前的還款節奏，並避免短期內同時開立多個新信貸賬戶。";
@@ -1639,11 +1944,11 @@ function generateReport() {
   const refTail = `${dd}${mm}${randInt(10,99)}x${randInt(10,99)}x0x${randInt(10,99)}x3x${randInt(10,99)}x0Zx3x1/x10002`;
 
   return {
-    name: randomName(),
-    hkid: randomHkid(),
-    dob: randomDob(),
-    phones: pickN(Array.from({length: 20}, () => randomPhone()), randInt(3, 7)),
-    addresses: pickN(Array.from({length: 12}, () => randomAddress()), randInt(4, 8)),
+    name: scenarioName || randomName(),
+    hkid: scenarioHkid || randomHkid(),
+    dob: scenarioDob || randomDob(),
+    phones: scenarioPhones || pickN(Array.from({length: 20}, () => randomPhone()), randInt(3, 7)),
+    addresses: scenarioAddrs || pickN(Array.from({length: 12}, () => randomAddress()), randInt(4, 8)),
     score, grade, scoreBand: band, scoreFactor,
     totalBalance, totalLimit, utilization, years,
     inquiriesCount: inquiries.filter(i => i.kind === "application").length,
@@ -1843,6 +2148,14 @@ function showTab(name) {
   if (currentLang === 'cn' && tradToSimp) applySimpTo(document.getElementById('rptBody'));
 }
 
+function setScenario(scenario) {
+  activeScenario = scenario;
+}
+
+function clearScenario() {
+  activeScenario = null;
+}
+
 function loadSample() {
   const r = generateReport();
   currentReport = r;
@@ -1863,7 +2176,258 @@ loadSample();
 
 
 // ============================================================
-// Demo flow control: start → pipeline → result
+// Input UI: render sample cards, handle type toggle, custom form
+// ============================================================
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function fmtHKDShort(n) {
+  if (n >= 1e6) return 'HK$ ' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return 'HK$ ' + Math.round(n / 1e3) + 'K';
+  return 'HKD ' + n;
+}
+
+function renderSampleGrid() {
+  const grid = document.getElementById('sampleGrid');
+  const data = currentType === 'individual' ? INDIVIDUAL_SAMPLES : INSTITUTION_SAMPLES;
+  grid.innerHTML = data.map(s => `
+    <button class="sample-card" data-sample-id="${s.id}">
+      <div class="sample-card-ix">${s.ix}</div>
+      <div class="sample-card-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${s.icon}"/></svg>
+      </div>
+      <div class="sample-card-name">${escapeHtml(s.name)}</div>
+      <div class="sample-card-cn">${escapeHtml(s.cn)}</div>
+      <div class="sample-card-en">${escapeHtml(s.en)}</div>
+      <div class="sample-card-meta">
+        <span>申請額 ${fmtHKDShort(s.profile.loan_amount)}</span>
+        <span class="sample-card-grade grade-${s.expected_grade}">
+          Grade ${s.expected_grade}
+        </span>
+      </div>
+    </button>
+  `).join('');
+  // Wire click handlers
+  grid.querySelectorAll('.sample-card').forEach(card => {
+    card.addEventListener('click', () => {
+      // Deselect all
+      grid.querySelectorAll('.sample-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const id = card.dataset.sampleId;
+      currentScenario = data.find(s => s.id === id);
+      currentIsCustom = false;
+      // Clear custom form selection
+      document.querySelectorAll('.form-field input, .form-field select').forEach(el => {
+        el.dataset.dirty = '';
+      });
+      updateConfirm();
+    });
+  });
+}
+
+function setType(type) {
+  currentType = type;
+  document.querySelectorAll('.type-btn').forEach(btn => {
+    const active = btn.dataset.type === type;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  // Reset selection
+  currentScenario = null;
+  currentIsCustom = false;
+  renderSampleGrid();
+  // Re-render form for the new type
+  renderCustomForm();
+  updateConfirm();
+}
+
+function renderCustomForm() {
+  const grid = document.getElementById('formGrid');
+  if (currentType === 'individual') {
+    grid.innerHTML = `
+      <div class="form-field full">
+        <label>姓名 / Name</label>
+        <input type="text" data-key="name" placeholder="LEUNG KAI WING" value="LEUNG KAI WING">
+      </div>
+      <div class="form-field">
+        <label>香港身份證 / HKID</label>
+        <input type="text" data-key="hkid" placeholder="A123456(7)" value="A482716(3)">
+      </div>
+      <div class="form-field">
+        <label>出生年 / Birth year</label>
+        <input type="number" data-key="dob_year" min="1940" max="2010" value="1988">
+      </div>
+      <div class="form-field full">
+        <label>職業 / Occupation</label>
+        <input type="text" data-key="occupation" placeholder="Senior Engineer · 5 yrs" value="Senior Engineer · 5 yrs">
+      </div>
+      <div class="form-field">
+        <label>月收入 / Monthly income</label>
+        <div class="slider-row">
+          <input type="range" data-key="income_hkd" min="10000" max="200000" step="1000" value="75000">
+          <span class="val" data-val="income_hkd">HK$ 75,000</span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>申請貸款額 / Loan amount</label>
+        <div class="slider-row">
+          <input type="range" data-key="loan_amount" min="50000" max="2000000" step="10000" value="300000">
+          <span class="val" data-val="loan_amount">HK$ 300K</span>
+        </div>
+      </div>
+    `;
+  } else {
+    grid.innerHTML = `
+      <div class="form-field full">
+        <label>公司名稱 / Company name</label>
+        <input type="text" data-key="name" placeholder="Acme Holdings Ltd" value="Acme Holdings Ltd">
+      </div>
+      <div class="form-field">
+        <label>商業登記號 / BR number</label>
+        <input type="text" data-key="hkid" placeholder="BR-12345678" value="BR-62819403">
+      </div>
+      <div class="form-field">
+        <label>行業 / Industry</label>
+        <input type="text" data-key="occupation" placeholder="Manufacturing" value="Manufacturing">
+      </div>
+      <div class="form-field">
+        <label>成立年數 / Years operating</label>
+        <div class="slider-row">
+          <input type="range" data-key="years_operating" min="0" max="30" step="1" value="8">
+          <span class="val" data-val="years_operating">8 yrs</span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>年營業額 / Annual revenue</label>
+        <div class="slider-row">
+          <input type="range" data-key="annual_revenue_hkd" min="1000000" max="500000000" step="1000000" value="80000000">
+          <span class="val" data-val="annual_revenue_hkd">HK$ 80.0M</span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>申請貸款額 / Loan amount</label>
+        <div class="slider-row">
+          <input type="range" data-key="loan_amount" min="500000" max="50000000" step="500000" value="10000000">
+          <span class="val" data-val="loan_amount">HK$ 10.0M</span>
+        </div>
+      </div>
+    `;
+  }
+  // Wire the inputs
+  grid.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('input', () => {
+      el.dataset.dirty = '1';
+      // Update slider readout
+      if (el.type === 'range') {
+        const valEl = document.querySelector(`[data-val="${el.dataset.key}"]`);
+        if (valEl) {
+          const v = parseFloat(el.value);
+          if (el.dataset.key === 'income_hkd') valEl.textContent = 'HK$ ' + v.toLocaleString('en-US');
+          else if (el.dataset.key === 'annual_revenue_hkd') valEl.textContent = 'HK$ ' + (v/1e6).toFixed(1) + 'M';
+          else if (el.dataset.key === 'loan_amount') valEl.textContent = v >= 1e6 ? 'HK$ ' + (v/1e6).toFixed(1) + 'M' : 'HK$ ' + Math.round(v/1e3) + 'K';
+          else if (el.dataset.key === 'years_operating') valEl.textContent = v + ' yrs';
+        }
+      }
+      // If form is dirty, deselect any sample card
+      if (el.dataset.dirty) {
+        document.querySelectorAll('.sample-card').forEach(c => c.classList.remove('selected'));
+        currentScenario = null;
+        currentIsCustom = true;
+        updateConfirm();
+      }
+    });
+  });
+}
+
+function gatherCustomProfile() {
+  const data = {};
+  document.querySelectorAll('#formGrid input').forEach(el => {
+    if (el.dataset.dirty === '1' || el.value) {
+      let v = el.value;
+      if (el.type === 'number') v = parseFloat(v) || 0;
+      data[el.dataset.key] = v;
+    }
+  });
+  // Fill defaults for missing keys
+  if (currentType === 'individual') {
+    data.type = 'individual';
+    data.name = data.name || 'CUSTOM APPLICANT';
+    data.hkid = data.hkid || 'X000000(0)';
+    data.dob_year = data.dob_year || 1990;
+    data.occupation = data.occupation || '';
+    data.income_hkd = data.income_hkd || 50000;
+    data.loan_amount = data.loan_amount || 100000;
+    data.loan_term_months = 36;
+    data.loan_purpose = 'Custom application';
+  } else {
+    data.type = 'institution';
+    data.name = data.name || 'CUSTOM ENTITY';
+    data.hkid = data.hkid || 'BR-00000000';
+    data.dob_year = (today().getFullYear() - (data.years_operating || 5));
+    data.occupation = data.occupation || 'Business';
+    data.income_hkd = data.annual_revenue_hkd || 10000000;
+    data.loan_amount = data.loan_amount || 1000000;
+    data.loan_term_months = 24;
+    data.loan_purpose = 'Custom facility';
+  }
+  // Derive tier from income / loan ratio
+  const ratio = data.loan_amount / Math.max(1, data.income_hkd * 12);
+  let tier;
+  if (ratio < 3) tier = 'high';
+  else if (ratio < 12) tier = 'mid';
+  else tier = 'low';
+  return {
+    ix: 'CUSTOM',
+    name: data.name,
+    cn: '自訂輸入',
+    en: 'Custom input',
+    icon: '',
+    tier,
+    expected_grade: tier === 'high' ? 'B' : tier === 'mid' ? 'D' : 'F',
+    profile: data,
+  };
+}
+
+function updateConfirm() {
+  const btn = document.getElementById('confirmBtn');
+  const summary = document.getElementById('confirmSummary');
+  const scenario = currentIsCustom ? gatherCustomProfile() : currentScenario;
+  if (scenario) {
+    btn.disabled = false;
+    const ixText = scenario.ix || 'CUSTOM';
+    summary.innerHTML = `
+      <div class="picked">
+        <span class="ix">${ixText}</span>
+        <span class="nm">${escapeHtml(scenario.name)}</span>
+        <span class="muted">· ${escapeHtml(scenario.cn)}</span>
+      </div>
+    `;
+  } else {
+    btn.disabled = true;
+    summary.innerHTML = '<span class="muted cjk">尚未選擇對象</span>';
+  }
+}
+
+// Wire type toggle
+document.querySelectorAll('.type-btn').forEach(btn => {
+  btn.addEventListener('click', () => setType(btn.dataset.type));
+});
+
+// Wire custom toggle
+document.getElementById('customToggle').addEventListener('click', () => {
+  const form = document.getElementById('customForm');
+  const toggle = document.getElementById('customToggle');
+  const isOpen = !form.hidden;
+  form.hidden = isOpen;
+  toggle.classList.toggle('open', !isOpen);
+  if (!isOpen && document.querySelectorAll('#formGrid input').length === 0) {
+    renderCustomForm();
+  }
+});
+
+// ============================================================
+// Demo flow: start → input → pipeline → result
 // ============================================================
 const PIPELINE_READOUTS = [
   "→ initiating MPC handshake…  ·  generating secret shares for HKID + name + DOB",
@@ -1899,7 +2463,6 @@ function runPipeline() {
     const steps = document.querySelectorAll('.pipe-step');
     const bar = document.getElementById('pipeBar');
     const readout = document.getElementById('pipeReadout');
-
     function next() {
       if (demoStep > 0) {
         steps[demoStep - 1].classList.remove('active');
@@ -1927,17 +2490,21 @@ function runPipeline() {
 
 async function startDemo() {
   if (demoRunning) return;
+  const scenario = currentIsCustom ? gatherCustomProfile() : currentScenario;
+  if (!scenario) return;
   demoRunning = true;
-  // Hide start, show pipeline
+  // Apply the scenario to the report generator
+  setScenario(scenario);
+  // Hide start + input
   hideSection('start');
+  hideSection('input');
+  // Reset and show pipeline
   resetPipeline();
   showSection('pipeline');
   setRestartVisible(true);
-  // Generate a fresh report (so user sees data appearing after the flow)
+  // Generate report
   loadSample();
-  // Run the animated pipeline
   await runPipeline();
-  // Show the result
   setTimeout(() => {
     hideSection('pipeline');
     showSection('result');
@@ -1950,32 +2517,43 @@ function restartDemo() {
   hideSection('result');
   hideSection('pipeline');
   resetPipeline();
-  hideSection('start');
-  document.getElementById('start').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  setTimeout(() => {
-    document.getElementById('start').hidden = false;
-    demoRunning = false;
-  }, 200);
   setRestartVisible(false);
+  clearScenario();
+  // Show start + input again
+  showSection('start');
+  showSection('input');
+  // Reset selection
+  currentScenario = null;
+  currentIsCustom = false;
+  document.querySelectorAll('.sample-card').forEach(c => c.classList.remove('selected'));
+  updateConfirm();
+  setTimeout(() => {
+    demoRunning = false;
+    document.getElementById('start').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
-document.getElementById('startBtn').addEventListener('click', startDemo);
+// Wire confirm button
+document.getElementById('confirmBtn').addEventListener('click', startDemo);
 document.getElementById('navRestart').addEventListener('click', restartDemo);
 document.getElementById('restartBtn').addEventListener('click', restartDemo);
 document.getElementById('regenBtn').addEventListener('click', () => {
   loadSample();
   window.scrollTo({ top: document.getElementById('result').offsetTop, behavior: 'smooth' });
 });
-
-// Brand click → restart
 document.getElementById('navBrand').addEventListener('click', (e) => {
   e.preventDefault();
   restartDemo();
 });
 
 // ============================================================
-// Reveal on scroll
+// Init
 // ============================================================
+renderSampleGrid();
+renderCustomForm();
+updateConfirm();
+
+// Reveal on scroll
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -2042,7 +2620,6 @@ function getTradToSimp() {
   }
   return openccReady;
 }
-
 async function setLang(lang) {
   currentLang = lang;
   const body = document.body;
@@ -2063,7 +2640,6 @@ async function setLang(lang) {
   });
   try { localStorage.setItem('bluebull-lang', lang); } catch (e) {}
 }
-
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });

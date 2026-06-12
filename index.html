@@ -3392,6 +3392,8 @@ function restartDemo() {
   resetPipeline();
   setRestartVisible(false);
   clearScenario();
+  // Reset type to individual so the user starts fresh
+  setType('individual');
   // Show start + input again
   showSection('start');
   showSection('input');

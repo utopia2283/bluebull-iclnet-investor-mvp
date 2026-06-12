@@ -3,3 +3,4 @@ work/
 *.pyc
 __pycache__/
 outputs/
+.vercel

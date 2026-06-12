@@ -1127,22 +1127,23 @@ h3 { font-size: 20px; line-height: 1.3; }
 .sc-bio { gap: 4px; }
 .sc-chip {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 3px 7px;
+  padding: 3px 8px;
   font-size: 10px;
   font-family: 'JetBrains Mono', monospace;
   background: var(--bg-3);
   border: 1px solid var(--line-2);
   border-radius: 999px;
-  color: var(--ink-2);
+  color: #E2E8F0;
   letter-spacing: 0.02em;
+  font-weight: 500;
 }
-.sc-bio-score { color: var(--green); border-color: rgba(34, 197, 94, 0.3); }
+.sc-bio-score { color: #34D399; border-color: #34D399; font-weight: 700; }
 .sc-meta-line {
-  font-size: 11px; color: var(--ink-2);
+  font-size: 11px; color: #D1D5DB;
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 0.01em;
 }
-.sc-meta-line.muted { color: var(--ink-3); }
+.sc-meta-line.muted { color: #94A3B8; }
 .sc-meta-line .dot-sep { color: var(--ink-3); margin: 0 2px; }
 
 /* Institution depth: corporate seal + stats */
@@ -1165,8 +1166,8 @@ h3 { font-size: 20px; line-height: 1.3; }
   font-family: 'JetBrains Mono', monospace;
   color: var(--ink-2);
 }
-.sc-stat-n { font-size: 13px; font-weight: 600; color: var(--ink); }
-.sc-stat-l { font-size: 10px; color: var(--ink-3); }
+.sc-stat-n { font-size: 14px; font-weight: 700; color: #F2F1EC; }
+.sc-stat-l { font-size: 10px; color: #94A3B8; }
 .sc-sev-low .sc-stat-n { color: var(--green); }
 .sc-sev-mid .sc-stat-n { color: var(--gold); }
 .sc-sev-high .sc-stat-n { color: var(--red-2); }
@@ -1516,8 +1517,8 @@ h3 { font-size: 20px; line-height: 1.3; }
   padding: 16px;
   text-align: center;
 }
-.lit-n { font-size: 26px; font-weight: 700; color: var(--ink); font-family: 'Space Grotesk', sans-serif; }
-.lit-l { font-size: 11px; color: var(--ink-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+.lit-n { font-size: 28px; font-weight: 700; color: #F2F1EC; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; }
+.lit-l { font-size: 11px; color: #94A3B8; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
 .lit-cell.lit-high { border-color: rgba(239, 68, 68, 0.3); }
 .lit-cell.lit-high .lit-n { color: var(--red); }
 .lit-cell.lit-mid { border-color: rgba(199, 169, 81, 0.3); }
@@ -1537,9 +1538,10 @@ h3 { font-size: 20px; line-height: 1.3; }
   margin-right: 6px;
   vertical-align: middle;
 }
-.sev-high { background: rgba(239, 68, 68, 0.18); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
-.sev-mid  { background: rgba(199, 169, 81, 0.18); color: #F4D58D; border: 1px solid rgba(199,169,81,0.3); }
-.sev-low  { background: rgba(34, 197, 94, 0.18); color: #86EFAC; border: 1px solid rgba(34,197,94,0.3); }
+.sev { font-weight: 800; }
+.sev-high { background: rgba(220, 38, 38, 0.25); color: #FCA5A5; border: 1px solid #F87171; }
+.sev-mid  { background: rgba(217, 169, 59, 0.25); color: #FCD34D; border: 1px solid #D9A93B; }
+.sev-low  { background: rgba(16, 185, 129, 0.25); color: #6EE7B7; border: 1px solid #34D399; }
 
 /* Directors table */
 .rpt-dir th {
@@ -1555,24 +1557,25 @@ h3 { font-size: 20px; line-height: 1.3; }
 .dir-name-cn { font-size: 11px; margin-top: 2px; }
 .role-tag {
   display: inline-block;
-  padding: 3px 8px;
+  padding: 3px 10px;
   border-radius: 4px;
   background: var(--bg-3);
   border: 1px solid var(--line-2);
   font-size: 11px;
-  color: var(--ink-2);
+  color: #E2E8F0;
+  font-weight: 500;
 }
 .ubo-badge {
   display: inline-block;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: 4px;
-  background: rgba(199, 169, 81, 0.18);
-  color: var(--gold);
-  border: 1px solid rgba(199,169,81,0.3);
+  background: rgba(217, 169, 59, 0.22);
+  color: #FCD34D;
+  border: 1px solid #D9A93B;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 /* Litigation / Charges table */
@@ -1671,28 +1674,65 @@ h3 { font-size: 20px; line-height: 1.3; }
 /* Biometric stamp (eKYC verification) */
 .bio-stamp {
   margin: 16px 0 24px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, var(--bg-2) 60%);
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  padding: 20px 22px;
+  background: linear-gradient(135deg, rgba(46, 230, 160, 0.08) 0%, var(--bg-2) 70%);
+  border: 1px solid rgba(46, 230, 160, 0.35);
   border-radius: var(--radius-lg);
   position: relative;
 }
 .bio-stamp::before {
   content: "✓ eKYC";
-  position: absolute; top: -8px; right: 16px;
+  position: absolute; top: -10px; right: 18px;
   background: var(--green);
-  color: var(--bg);
-  font-size: 9px; font-weight: 700;
-  padding: 3px 8px; border-radius: 4px;
+  color: #042012;
+  font-size: 10px; font-weight: 800;
+  padding: 4px 10px; border-radius: 4px;
   font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  box-shadow: 0 2px 12px rgba(46, 230, 160, 0.4);
 }
 .bio-head {
   display: flex; align-items: center; gap: 10px;
-  font-size: 13px; color: var(--green);
-  margin-bottom: 14px;
+  font-size: 13px;
+  color: #6EE7B7;  /* brighter, more readable on dark gradient */
+  margin-bottom: 16px;
+  font-weight: 500;
 }
-.bio-head .en { color: var(--ink-3); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+.bio-head-cn { color: #6EE7B7; }
+.bio-head-en {
+  color: #94A3B8;  /* bumped from var(--ink-3) for readability */
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  margin-left: 4px;
+}
+.bio-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.bio-portrait {
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line-2), 0 8px 24px rgba(0,0,0,0.5);
+}
+.bio-portrait .face-svg { display: block; }
+.bio-match-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: #042012;
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex; align-items: center; gap: 3px;
+}
+.bio-data { flex: 1; min-width: 0; }
 .bio-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -1705,12 +1745,65 @@ h3 { font-size: 20px; line-height: 1.3; }
   padding: 10px 12px;
   text-align: center;
 }
-.bio-n { font-size: 20px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
-.bio-l { font-size: 10px; color: var(--ink-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
-.bio-foot { padding-top: 8px; border-top: 1px solid var(--line-2); }
+.bio-n { font-size: 22px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; }
+.bio-n.v-good { color: #34D399; }   /* brighter, AAA contrast on dark */
+.bio-n.v-warn { color: #FBBF24; }   /* brighter amber */
+.bio-n.v-strong { color: #F2F1EC; }
+.bio-l { font-size: 10px; color: #94A3B8; margin-top: 6px; letter-spacing: 0.04em; }
 
-@media (max-width: 540px) {
+.bio-contact {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.bio-contact-row {
+  display: flex; align-items: center; gap: 8px;
+  color: #6EE7B7;
+  font-size: 13px;
+}
+.bio-contact-row svg { flex-shrink: 0; }
+.bio-email { font-family: 'JetBrains Mono', monospace; color: #F2F1EC; font-weight: 500; font-size: 13px; }
+.bio-email-alt { color: #94A3B8; font-size: 12px; }
+.bio-phone { color: #F2F1EC; font-size: 13px; }
+.bio-phone-row { color: #94A3B8; }
+
+.bio-foot {
+  padding-top: 8px;
+  border-top: 1px solid var(--line-2);
+  font-size: 11px;
+  color: #94A3B8;
+}
+.bio-foot .v-strong { color: #F2F1EC; font-weight: 500; }
+.bio-foot .v-dim { color: #94A3B8; }
+.bio-foot .v-good { color: #34D399; }
+
+@media (max-width: 720px) {
+  .bio-body { flex-direction: column; }
+  .bio-portrait { align-self: flex-start; }
   .bio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Cover layout for individual — portrait + email */
+.rpt-cover-line { line-height: 1.5; }
+.cover-line-1 { font-size: 18px; font-weight: 700; color: #0F172A; letter-spacing: -0.01em; }
+.cover-line-2 { color: #334155; margin-top: 4px; font-weight: 500; }
+.cover-line-3 { color: #475569; margin-top: 3px; }
+.cover-email { color: #92400E !important; font-size: 13px; font-weight: 600; background: #FEF3C7; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 2px; }
+.cover-portrait {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line-2), 0 8px 24px rgba(0,0,0,0.5);
+}
+.cover-emblem { display: flex; align-items: center; justify-content: flex-end; }
+
+/* Email cell in personal info table */
+.email-cell {
+  color: var(--gold) !important;
+  font-weight: 500;
+  word-break: break-all;
 }
 
 </style>
@@ -1972,8 +2065,8 @@ let customFormData = null;
 // ============================================================
 // Sample data
 // ============================================================
-const INDIVIDUAL_SAMPLES = [{"id": "ind-01", "ix": "樣本 01", "name": "陳大文 · MTRC 工程師", "cn": "高信用優質客戶", "en": "Grade-A salaried borrower", "icon": "M3 21V7l9-4 9 4v14M9 21V11h6v10", "tier": "high", "expected_grade": "A", "profile": {"type": "individual", "name": "CHAN TAI MAN", "name_cn": "陳大文", "hkid": "A482716(3)", "dob_year": 1988, "dob": "1988-02-12", "occupation": "MTRC 工程師 · 10 年", "income_hkd": 95000, "loan_amount": 250000, "loan_term_months": 36, "loan_purpose": "個人週轉", "id_issue_date": "2010-03-15", "id_issue_place": "HKSAR · Immigration Department", "nationality": "Chinese (HKSAR)", "marital": "已婚 · Married", "dependants": 2, "residence_status": "自置物業 · Owned · 8 yrs at current address", "education": "Master of Engineering, HKU", "languages": ["Cantonese", "English", "Mandarin"], "biometric": {"face_match_score": 0.987, "liveness_score": 0.992, "last_verified": "2026-06-10T14:22:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 38, "device": "iPhone 15 Pro · iOS 18.2", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 4, "social_verified": 3, "phone_career_yrs": 14, "address_stability": "Stable · 8 yrs", "vpn_or_tor": false, "device_count": 3}}}, {"id": "ind-02", "ix": "樣本 02", "name": "李嘉慧 · 餐飲經營", "cn": "中小企業東主", "en": "SME operator", "icon": "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5", "tier": "mid", "expected_grade": "D", "profile": {"type": "individual", "name": "LEE KA WAI", "name_cn": "李嘉慧", "hkid": "B739284(5)", "dob_year": 1982, "dob": "1982-11-04", "occupation": "餐廳東主 · 6 年", "income_hkd": 55000, "loan_amount": 1200000, "loan_term_months": 24, "loan_purpose": "週轉金", "id_issue_date": "2002-06-22", "id_issue_place": "HKSAR · Immigration Department", "nationality": "Chinese (HKSAR)", "marital": "已婚 · Married", "dependants": 1, "residence_status": "租住 · Rented · 3 yrs", "education": "Diploma · Hospitality Management", "languages": ["Cantonese", "English"], "biometric": {"face_match_score": 0.974, "liveness_score": 0.985, "last_verified": "2026-05-28T09:41:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 43, "device": "Samsung Galaxy S24 · Android 14", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 2, "social_verified": 1, "phone_career_yrs": 7, "address_stability": "Medium · moved twice in 5 yrs", "vpn_or_tor": false, "device_count": 2}}}, {"id": "ind-03", "ix": "樣本 03", "name": "王曉明 · 跨境大灣區", "cn": "GBA 標準合同", "en": "Cross-border GBA", "icon": "M12 2v20M2 12h20M5 5l14 14M19 5L5 19", "tier": "high", "expected_grade": "B", "profile": {"type": "individual", "name": "WANG XIAO MING", "name_cn": "王曉明", "hkid": "C561928(2)", "dob_year": 1985, "dob": "1985-07-19", "occupation": "深圳科技公司 CEO", "income_hkd": 120000, "loan_amount": 800000, "loan_term_months": 60, "loan_purpose": "香港物業按揭共同借款人", "id_issue_date": "2018-09-10", "id_issue_place": "HKSAR · Top-up · Mainland permit holder", "nationality": "Chinese · Mainland Resident with HK Top-up", "marital": "未婚 · Single", "dependants": 0, "residence_status": "自置 · Owned HK + Shenzhen", "education": "MBA · Wharton", "languages": ["Mandarin", "Cantonese", "English"], "biometric": {"face_match_score": 0.981, "liveness_score": 0.989, "last_verified": "2026-06-08T22:15:00+08:00", "verifier": "BlueBull eKYC v2.1 · GBA bridge", "id_chip_authentic": true, "face_photo_age_est": 40, "device": "Huawei Mate 60 Pro · HarmonyOS 4", "ip_country": "HKG (cross-border tunneled from SZX)", "geo_match": "Tunneled · verified via GBA bridge protocol"}, "digital_footprint": {"email_accounts": 6, "social_verified": 4, "phone_career_yrs": 9, "address_stability": "Stable · HK + SZ dual anchor", "vpn_or_tor": false, "device_count": 4}}}, {"id": "ind-04", "ix": "樣本 04", "name": "張子俊 · 應屆畢業", "cn": "薄文件新移民", "en": "Thin-file new arrival", "icon": "M12 14l9-5-9-5-9 5 9 5z", "tier": "low", "expected_grade": "J", "profile": {"type": "individual", "name": "CHEUNG TSZ CHUN", "name_cn": "張子俊", "hkid": "D294817(8)", "dob_year": 2002, "dob": "2002-03-30", "occupation": "Marketing 助理 · 1 年", "income_hkd": 22000, "loan_amount": 60000, "loan_term_months": 12, "loan_purpose": "信用建立", "id_issue_date": "2024-05-08", "id_issue_place": "HKSAR · Immigration Department (new arrival)", "nationality": "Chinese (HKSAR · new)", "marital": "未婚 · Single", "dependants": 0, "residence_status": "與家人同住 · With family · 1 yr", "education": "Bachelor of Business · PolyU · 2024", "languages": ["Cantonese", "English"], "biometric": {"face_match_score": 0.962, "liveness_score": 0.978, "last_verified": "2026-06-11T11:08:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 24, "device": "iPhone 13 · iOS 17.5", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 3, "social_verified": 2, "phone_career_yrs": 2, "address_stability": "Thin file · 1 address on file", "vpn_or_tor": false, "device_count": 1}}}];
-const INSTITUTION_SAMPLES = [{"id": "ins-01", "ix": "樣本 01", "name": "順馳物流控股", "cn": "物流倉儲組合", "en": "Logistics portfolio", "icon": "M3 7h18v10H3zM7 7V4h10v3", "tier": "high", "expected_grade": "A", "profile": {"type": "institution", "name": "Shun Chi Logistics Holdings Ltd", "name_cn": "順馳物流控股有限公司", "br_no": "BR-62819403", "br_issue_date": "2012-04-18", "br_status": "Valid · In-force", "cr_no": "CR-1729384", "incorporation_date": "2012-03-30", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "20/F, TOWER 535, 535 CAUSEWAY ROAD, CAUSEWAY BAY, HONG KONG", "registered_capital_hkd": 10000000, "paid_up_capital_hkd": 10000000, "logo_color": "#C7A951", "logo_initials": "SC", "industry": "物流倉儲", "industry_code": "ISIC 4923 · Freight transport by road", "industry_risk": "Medium", "esg_score": 62, "loan_amount": 25000000, "loan_term_months": 36, "loan_purpose": "車隊擴張", "directors": [{"name": "WONG CHI KEUNG", "name_cn": "王志强", "role": "Director · Chairman", "appt_date": "2012-03-30", "shareholding_pct": 45, "nationality": "HKSAR", "other_directorships": 3, "pep": false, "ubo": true, "hkid": "A334829(1)"}, {"name": "CHENG MEI FUN", "name_cn": "鄭美芬", "role": "Director · CEO", "appt_date": "2012-03-30", "shareholding_pct": 30, "nationality": "HKSAR", "other_directorships": 2, "pep": false, "ubo": true, "hkid": "E712449(6)"}, {"name": "LEE KA WAH", "name_cn": "李嘉華", "role": "Director · CFO", "appt_date": "2014-08-12", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": false, "hkid": "G182746(0)"}], "shareholders": [{"name": "WONG CHI KEUNG", "name_cn": "王志强", "shares_pct": 45, "class": "Ordinary"}, {"name": "CHENG MEI FUN", "name_cn": "鄭美芬", "shares_pct": 30, "class": "Ordinary"}, {"name": "Pacific Logistic Capital LP", "shares_pct": 20, "class": "Preference"}, {"name": "Employee ESOP", "shares_pct": 5, "class": "Ordinary · options"}], "litigation": [{"case_id": "HCPI 1234/2024", "court": "High Court · PI", "year": 2024, "role": "Defendant", "type": "Breach of contract · fleet lease", "claim_hkd": 2500000, "status": "Settled · 2025-02-14", "severity": "low", "summary": "Sub-lease dispute, settled at HK$1.4M"}], "charges": [{"id": "CHG-001", "type": "All-monies mortgage", "lender": "HSBC Hong Kong", "amount_hkd": 50000000, "registered": "2023-08-15", "status": "Outstanding", "collateral": "Property · 20/F, TOWER 535, Causeway Bay"}, {"id": "CHG-002", "type": "Floating charge", "lender": "Hang Seng Bank", "amount_hkd": 30000000, "registered": "2021-03-22", "status": "Outstanding", "collateral": "All assets · undertakings · goodwill"}], "relationships": [{"name": "Shun Chi Logistics (Shenzhen) Ltd", "name_cn": "顺驰物流(深圳)有限公司", "type": "Subsidiary · 100%", "country": "PRC · Shenzhen", "incorporation": "2014-11-22", "cr_no": "PRC-91440300MA5G7X9P3K", "purpose": "Cross-border fleet operations"}, {"name": "SC Property Holdings Ltd", "name_cn": "順馳物業控股有限公司", "type": "Subsidiary · 100%", "country": "BVI", "incorporation": "2013-06-08", "cr_no": "BVI-198472", "purpose": "Warehouse property holding"}, {"name": "Greater Bay Freight Alliance", "name_cn": "大灣區貨運聯盟", "type": "JV · 30%", "country": "HKG", "incorporation": "2020-09-15", "cr_no": "JV-2020-0917", "purpose": "Consortium for cross-border consolidation"}], "financials": {"revenue_3y": [280000000, 265000000, 248000000], "ebitda_margin": 0.142, "current_ratio": 1.85, "debt_to_equity": 0.62, "interest_coverage": 6.4, "auditor": "KPMG · unqualified", "last_audit_date": "2025-12-15"}, "banking": [{"bank": "HSBC Hong Kong", "type": "Primary · Operating", "since": "2012", "facilities": "Term loan HK$50M + revolving credit HK$30M"}, {"bank": "Hang Seng Bank", "type": "Trade finance", "since": "2015", "facilities": "Letter of credit · trust receipt"}, {"bank": "Bank of China (HK)", "type": "Cross-border RMB", "since": "2018", "facilities": "GBA bridge facility HK$25M"}], "headcount": 142, "headcount_trend": "+8% YoY", "fleet_size": "82 trucks · 14 warehouses · 4 cross-border depots"}}, {"id": "ins-02", "ix": "樣本 02", "name": "美心餐飲集團", "cn": "連鎖餐飲組合", "en": "F&B chain portfolio", "icon": "M5 21V8l7-4 7 4v13M9 21v-6h6v6M9 11h.01M15 11h.01", "tier": "mid", "expected_grade": "C", "profile": {"type": "institution", "name": "Maxim's Caterers Ltd", "name_cn": "美心餐飲集團有限公司", "br_no": "BR-71849205", "br_issue_date": "1998-02-04", "br_status": "Valid · In-force", "cr_no": "CR-0612847", "incorporation_date": "1998-01-22", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "12/F, MAXIM'S CENTRE, 17-21 CONNAUGHT ROAD CENTRAL, HONG KONG", "registered_capital_hkd": 50000000, "paid_up_capital_hkd": 50000000, "logo_color": "#B91C1C", "logo_initials": "MX", "industry": "餐飲零售", "industry_code": "ISIC 5610 · Restaurants & mobile food", "industry_risk": "Medium-High", "esg_score": 54, "loan_amount": 18000000, "loan_term_months": 24, "loan_purpose": "門市翻新", "directors": [{"name": "WU WING HUNG", "name_cn": "鄔永鴻", "role": "Director · Chairman & CEO", "appt_date": "1998-01-22", "shareholding_pct": 38, "nationality": "HKSAR", "other_directorships": 7, "pep": false, "ubo": true, "hkid": "D123456(7)"}, {"name": "WU YUEN MAN", "name_cn": "鄔婉雯", "role": "Director · Deputy CEO", "appt_date": "2005-04-11", "shareholding_pct": 22, "nationality": "HKSAR", "other_directorships": 4, "pep": false, "ubo": true, "hkid": "D654321(2)"}, {"name": "CHAN TAK SHING", "name_cn": "陳德成", "role": "Director · COO", "appt_date": "2010-09-03", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": false, "hkid": "E987654(3)"}, {"name": "LIU KAR FAI", "name_cn": "廖家輝", "role": "Independent NED", "appt_date": "2018-06-15", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 5, "pep": false, "ubo": false, "hkid": "G456123(8)"}, {"name": "CHOW PUI YI", "name_cn": "周佩儀", "role": "Director · CFO", "appt_date": "2014-11-20", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 2, "pep": false, "ubo": false, "hkid": "E321987(4)"}], "shareholders": [{"name": "WU WING HUNG", "name_cn": "鄔永鴻", "shares_pct": 38, "class": "Ordinary"}, {"name": "WU YUEN MAN", "name_cn": "鄔婉雯", "shares_pct": 22, "class": "Ordinary"}, {"name": "Maxim Holdings (PTC) Ltd", "shares_pct": 25, "class": "Ordinary · family trust"}, {"name": "Public float · institutional", "shares_pct": 15, "class": "Ordinary"}], "litigation": [{"case_id": "DCCC 891/2023", "court": "District Court · CC", "year": 2023, "role": "Defendant", "type": "Food safety · Centre for Food Safety prosecution", "claim_hkd": 800000, "status": "Conviction · fined HK$120K · 2024-03", "severity": "medium", "summary": "FSS contravention at Tuen Mun branch; corrective action complete"}, {"case_id": "HCPI 5821/2022", "court": "High Court · PI", "year": 2022, "role": "Defendant", "type": "Wrongful dismissal · former GM", "claim_hkd": 6500000, "status": "Dismissed · 2024-08", "severity": "low", "summary": "Claim dismissed with costs awarded to defendant"}, {"case_id": "LAB 142/2025", "court": "Labour Tribunal", "year": 2025, "role": "Defendant", "type": "Severance dispute · 3 kitchen staff", "claim_hkd": 420000, "status": "Settled · HK$280K · 2025-04", "severity": "low", "summary": "Routine, settled at mediation"}], "charges": [{"id": "CHG-101", "type": "All-monies mortgage", "lender": "Standard Chartered HK", "amount_hkd": 80000000, "registered": "2019-06-10", "status": "Outstanding", "collateral": "Property · 12/F, Maxim's Centre, Central"}], "relationships": [{"name": "Maxim Bakeries (HK) Ltd", "name_cn": "美心餅店有限公司", "type": "Subsidiary · 100%", "country": "HKSAR", "incorporation": "2001-08-14", "cr_no": "CR-3382014", "purpose": "Bakery operations · 240 outlets"}, {"name": "MX Catering (Macau) Ltd", "name_cn": "美心餐飲(澳門)有限公司", "type": "Subsidiary · 80%", "country": "Macau", "incorporation": "2010-03-08", "cr_no": "MACAU-28147", "purpose": "Macau franchise operations"}, {"name": "Great Wall Foodcourt JV", "name_cn": "長城美食廣場合資", "type": "JV · 50%", "country": "PRC · Shanghai", "incorporation": "2018-04-22", "cr_no": "PRC-91310115MA1K3X8Y", "purpose": "Mainland food court operator"}, {"name": "Wu Family Office Ltd", "name_cn": "鄔氏家族辦公室有限公司", "type": "Common director · related", "country": "BVI", "incorporation": "2015-12-01", "cr_no": "BVI-338291", "purpose": "Family wealth vehicle · UBO holding"}], "financials": {"revenue_3y": [450000000, 422000000, 398000000], "ebitda_margin": 0.094, "current_ratio": 1.42, "debt_to_equity": 0.91, "interest_coverage": 4.1, "auditor": "BDO · unqualified", "last_audit_date": "2025-11-28"}, "banking": [{"bank": "Standard Chartered HK", "type": "Primary · Operating", "since": "1998", "facilities": "Term loan HK$80M + revolving HK$40M"}, {"bank": "HSBC Hong Kong", "type": "Trade finance", "since": "2002", "facilities": "Multi-currency cash pool"}], "headcount": 2840, "headcount_trend": "-3% YoY (post-rationalisation)", "fleet_size": "185 outlets HK + 24 Macau + 8 PRC JV"}}, {"id": "ins-03", "ix": "樣本 03", "name": "新創科技公司", "cn": "初創 · SaaS", "en": "Tech startup", "icon": "M9 4h6v4H9zM5 8h14v12H5z", "tier": "low", "expected_grade": "F", "profile": {"type": "institution", "name": "NovaTech Solutions Ltd", "name_cn": "新創科技有限公司", "br_no": "BR-92184756", "br_issue_date": "2024-08-22", "br_status": "Valid · In-force", "cr_no": "CR-3382741", "incorporation_date": "2024-07-15", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "UNIT 1208, 12/F, TOWER B, 22 YIP HING STREET, WONG CHUK HANG, HONG KONG", "registered_capital_hkd": 1000000, "paid_up_capital_hkd": 250000, "logo_color": "#3B82F6", "logo_initials": "NT", "industry": "軟件 / SaaS", "industry_code": "ISIC 5820 · Software publishing", "industry_risk": "High (early-stage)", "esg_score": 71, "loan_amount": 3000000, "loan_term_months": 18, "loan_purpose": "現金流週轉", "directors": [{"name": "CHAN HO TIN", "name_cn": "陳浩天", "role": "Director · Co-founder & CTO", "appt_date": "2024-07-15", "shareholding_pct": 48, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": true, "hkid": "K771203(4)"}, {"name": "LI ZI YING", "name_cn": "李子瑩", "role": "Director · Co-founder & CEO", "appt_date": "2024-07-15", "shareholding_pct": 32, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": true, "hkid": "K884201(7)"}], "shareholders": [{"name": "CHAN HO TIN", "name_cn": "陳浩天", "shares_pct": 48, "class": "Ordinary"}, {"name": "LI ZI YING", "name_cn": "李子瑩", "shares_pct": 32, "class": "Ordinary"}, {"name": "HK Tech Seed Fund I LP", "shares_pct": 15, "class": "Preference · Series Seed"}, {"name": "Cyberport Incubation Holding", "shares_pct": 5, "class": "Ordinary · non-voting"}], "litigation": [], "charges": [], "relationships": [{"name": "NovaTech (Shenzhen) Technology Co Ltd", "name_cn": "新创科技(深圳)有限公司", "type": "Subsidiary · 100% (WFOE)", "country": "PRC · Shenzhen", "incorporation": "2024-12-10", "cr_no": "PRC-91440300MAE4Q1X2N", "purpose": "Engineering team · cost base"}], "financials": {"revenue_3y": [0, 0, 8500000], "ebitda_margin": -0.42, "current_ratio": 0.85, "debt_to_equity": 0, "interest_coverage": 0, "auditor": "n/a (revenue < HK$10M · audit-exempt)", "last_audit_date": "n/a"}, "banking": [{"bank": "ZA Bank", "type": "Operating account", "since": "2024", "facilities": "Virtual bank · HK$500K operating line"}], "headcount": 9, "headcount_trend": "+3 in 6 mo (5 HK + 4 SZ)", "fleet_size": "Cloud SaaS · 47 paying customers · ARR HK$8.5M"}}, {"id": "ins-04", "ix": "樣本 04", "name": "某個人信貸組合", "cn": "消費金融 NPL 包", "en": "Consumer NPL pool", "icon": "M3 3h18v18H3zM3 9h18M9 21V9", "tier": "mid", "expected_grade": "D", "profile": {"type": "institution", "name": "Pacific Consumer Finance Pool 2026-A", "name_cn": "太平洋消費金融資產組合 2026-A", "br_no": "POOL-2026-A-014", "br_issue_date": "2026-02-01", "br_status": "Valid · SPV · ring-fenced", "cr_no": "SPV-2026-A-014", "incorporation_date": "2026-01-22", "incorporation_place": "Cayman Islands · SPV", "company_type": "Segregated portfolio company · SPV", "status": "Active · Live · ring-fenced", "registered_office": "C/O WALKERS CORPORATE LIMITED, CAYMAN CORPORATE CENTRE, 27 HOSPITAL ROAD, GEORGE TOWN, GRAND CAYMAN", "registered_capital_hkd": 100000, "paid_up_capital_hkd": 100000, "logo_color": "#6B7280", "logo_initials": "PC", "industry": "消費金融 NPL", "industry_code": "ISIC 6492 · Other credit granting", "industry_risk": "High (NPL portfolio)", "esg_score": 48, "loan_amount": 48500000, "loan_term_months": 12, "loan_purpose": "資產包收購", "directors": [{"name": "PTC Corporate Services (Cayman) Ltd", "name_cn": "—", "role": "Corporate Director (sole)", "appt_date": "2026-01-22", "shareholding_pct": 0, "nationality": "Cayman", "other_directorships": 142, "pep": false, "ubo": false, "hkid": "n/a"}], "shareholders": [{"name": "Pacific Consumer Finance Holdings", "shares_pct": 100, "class": "Ordinary · SPV beneficiary"}], "litigation": [{"case_id": "Pool-level · 14,832 underlying accounts", "court": "Various · underlying", "year": 2025, "role": "Creditor (assigned)", "type": "Consumer NPL · assigned", "claim_hkd": 48500000, "status": "Active collection · 23% recovery YTD", "severity": "high", "summary": "NPL pool: 14,832 unsecured personal loans · avg balance HK$3,267 · avg DPD 187 days at cut-off"}], "charges": [{"id": "CHG-POOL-001", "type": "Pledge over receivables", "lender": "Lead arranger · HSBC", "amount_hkd": 60000000, "registered": "2026-02-10", "status": "Outstanding", "collateral": "Pool assets · 14,832 underlying unsecured personal loans"}], "relationships": [{"name": "Pacific Consumer Finance Holdings", "name_cn": "—", "type": "Originator · parent (100%)", "country": "BVI", "incorporation": "2018-03-15", "cr_no": "BVI-228471", "purpose": "Originator of pool · retains servicing"}, {"name": "HSBC Institutional Trust Services", "name_cn": "—", "type": "Trustee", "country": "HKSAR", "incorporation": "1972-01-01", "cr_no": "TR-0001", "purpose": "Pool trustee · NAV verification · waterfall admin"}, {"name": "Pacific Servicing (HK) Ltd", "name_cn": "太平洋催收服務有限公司", "type": "Servicer", "country": "HKSAR", "incorporation": "2019-06-22", "cr_no": "CR-2918472", "purpose": "Collections agency · 24-month servicing agreement"}], "financials": {"revenue_3y": [0, 0, 0], "ebitda_margin": 0, "current_ratio": "n/a · pool", "debt_to_equity": "n/a · pool", "interest_coverage": "n/a · pool", "auditor": "PwC · pool audit · unqualified", "last_audit_date": "2026-04-30"}, "banking": [{"bank": "HSBC Hong Kong", "type": "Pool account · segregated", "since": "2026", "facilities": "Waterfall account · HK$60M facility"}], "headcount": 0, "headcount_trend": "n/a (serviced externally)", "fleet_size": "14,832 underlying accounts · 23% recovery YTD · WAC 187 DPD"}}];
+const INDIVIDUAL_SAMPLES = [{"id": "ind-01", "ix": "樣本 01", "name": "陳大文 · MTRC 工程師", "cn": "高信用優質客戶", "en": "Grade-A salaried borrower", "icon": "M3 21V7l9-4 9 4v14M9 21V11h6v10", "tier": "high", "expected_grade": "A", "profile": {"type": "individual", "name": "CHAN TAI MAN", "name_cn": "陳大文", "hkid": "A482716(3)", "dob_year": 1988, "dob": "1988-02-12", "occupation": "MTRC 工程師 · 10 年", "income_hkd": 95000, "loan_amount": 250000, "loan_term_months": 36, "loan_purpose": "個人週轉", "email": "taiman.chan@gmail.com", "email_secondary": "tm.chan@mtr.com.hk", "phone_primary": "9123 4567", "id_issue_date": "2010-03-15", "id_issue_place": "HKSAR · Immigration Department", "nationality": "Chinese (HKSAR)", "marital": "已婚 · Married", "dependants": 2, "residence_status": "自置物業 · Owned · 8 yrs at current address", "education": "Master of Engineering, HKU", "languages": ["Cantonese", "English", "Mandarin"], "biometric": {"face_match_score": 0.987, "liveness_score": 0.992, "last_verified": "2026-06-10T14:22:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 38, "device": "iPhone 15 Pro · iOS 18.2", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 4, "social_verified": 3, "phone_career_yrs": 14, "address_stability": "Stable · 8 yrs", "vpn_or_tor": false, "device_count": 3}, "face": {"skin": "#E8B89A", "skin_shadow": "#C99A7A", "hair": "#1A1A1A", "hair_style": "side-part", "eye": "#3D2817", "has_glasses": true, "glasses_style": "rect", "facial_hair": "stubble", "lipstick": false, "collar": "#1E3A5F", "collar_accent": "#F5F5F5", "background": "#1A2D5C"}}}, {"id": "ind-02", "ix": "樣本 02", "name": "李嘉慧 · 餐飲經營", "cn": "中小企業東主", "en": "SME operator", "icon": "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5", "tier": "mid", "expected_grade": "D", "profile": {"type": "individual", "name": "LEE KA WAI", "name_cn": "李嘉慧", "hkid": "B739284(5)", "dob_year": 1982, "dob": "1982-11-04", "occupation": "餐廳東主 · 6 年", "income_hkd": 55000, "loan_amount": 1200000, "loan_term_months": 24, "loan_purpose": "週轉金", "email": "kwaiwai.lee82@yahoo.com.hk", "email_secondary": "info@kamfung-bistro.hk", "phone_primary": "9876 5432", "id_issue_date": "2002-06-22", "id_issue_place": "HKSAR · Immigration Department", "nationality": "Chinese (HKSAR)", "marital": "已婚 · Married", "dependants": 1, "residence_status": "租住 · Rented · 3 yrs", "education": "Diploma · Hospitality Management", "languages": ["Cantonese", "English"], "biometric": {"face_match_score": 0.974, "liveness_score": 0.985, "last_verified": "2026-05-28T09:41:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 43, "device": "Samsung Galaxy S24 · Android 14", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 2, "social_verified": 1, "phone_career_yrs": 7, "address_stability": "Medium · moved twice in 5 yrs", "vpn_or_tor": false, "device_count": 2}, "face": {"skin": "#F2D4B5", "skin_shadow": "#D4B295", "hair": "#1A1A1A", "hair_style": "long", "hair_length": "long", "eye": "#4A2C20", "has_glasses": false, "facial_hair": "none", "lipstick": true, "lipstick_color": "#B23A48", "collar": "#7A1F2B", "collar_accent": "#E8C8B8", "background": "#7A1F2B"}}}, {"id": "ind-03", "ix": "樣本 03", "name": "王曉明 · 跨境大灣區", "cn": "GBA 標準合同", "en": "Cross-border GBA", "icon": "M12 2v20M2 12h20M5 5l14 14M19 5L5 19", "tier": "high", "expected_grade": "B", "profile": {"type": "individual", "name": "WANG XIAO MING", "name_cn": "王曉明", "hkid": "C561928(2)", "dob_year": 1985, "dob": "1985-07-19", "occupation": "深圳科技公司 CEO", "income_hkd": 120000, "loan_amount": 800000, "loan_term_months": 60, "loan_purpose": "香港物業按揭共同借款人", "email": "wang.xiaoming@nova-tech.cn", "email_secondary": "wxming@gmail.com", "phone_primary": "+86 138 0293 8847", "id_issue_date": "2018-09-10", "id_issue_place": "HKSAR · Top-up · Mainland permit holder", "nationality": "Chinese · Mainland Resident with HK Top-up", "marital": "未婚 · Single", "dependants": 0, "residence_status": "自置 · Owned HK + Shenzhen", "education": "MBA · Wharton", "languages": ["Mandarin", "Cantonese", "English"], "biometric": {"face_match_score": 0.981, "liveness_score": 0.989, "last_verified": "2026-06-08T22:15:00+08:00", "verifier": "BlueBull eKYC v2.1 · GBA bridge", "id_chip_authentic": true, "face_photo_age_est": 40, "device": "Huawei Mate 60 Pro · HarmonyOS 4", "ip_country": "HKG (cross-border tunneled from SZX)", "geo_match": "Tunneled · verified via GBA bridge protocol"}, "digital_footprint": {"email_accounts": 6, "social_verified": 4, "phone_career_yrs": 9, "address_stability": "Stable · HK + SZ dual anchor", "vpn_or_tor": false, "device_count": 4}, "face": {"skin": "#EFC9A0", "skin_shadow": "#D1A77A", "hair": "#0F0F0F", "hair_style": "short", "eye": "#2C1810", "has_glasses": false, "facial_hair": "none", "lipstick": false, "collar": "#0F172A", "collar_accent": "#FFFFFF", "background": "#7C2D12"}}}, {"id": "ind-04", "ix": "樣本 04", "name": "張子俊 · 應屆畢業", "cn": "薄文件新移民", "en": "Thin-file new arrival", "icon": "M12 14l9-5-9-5-9 5 9 5z", "tier": "low", "expected_grade": "J", "profile": {"type": "individual", "name": "CHEUNG TSZ CHUN", "name_cn": "張子俊", "hkid": "D294817(8)", "dob_year": 2002, "dob": "2002-03-30", "occupation": "Marketing 助理 · 1 年", "income_hkd": 22000, "loan_amount": 60000, "loan_term_months": 12, "loan_purpose": "信用建立", "email": "tc.cheung02@gmail.com", "email_secondary": "—", "phone_primary": "6234 1187", "id_issue_date": "2024-05-08", "id_issue_place": "HKSAR · Immigration Department (new arrival)", "nationality": "Chinese (HKSAR · new)", "marital": "未婚 · Single", "dependants": 0, "residence_status": "與家人同住 · With family · 1 yr", "education": "Bachelor of Business · PolyU · 2024", "languages": ["Cantonese", "English"], "biometric": {"face_match_score": 0.962, "liveness_score": 0.978, "last_verified": "2026-06-11T11:08:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 24, "device": "iPhone 13 · iOS 17.5", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 3, "social_verified": 2, "phone_career_yrs": 2, "address_stability": "Thin file · 1 address on file", "vpn_or_tor": false, "device_count": 1}, "face": {"skin": "#F8D7B5", "skin_shadow": "#DBB291", "hair": "#2A1A12", "hair_style": "messy", "eye": "#2C1810", "has_glasses": false, "facial_hair": "none", "lipstick": false, "collar": "#3B82F6", "collar_accent": "#FFFFFF", "background": "#0F766E"}}}];
+const INSTITUTION_SAMPLES = [{"id": "ins-01", "ix": "樣本 01", "name": "順馳物流控股", "cn": "物流倉儲組合", "en": "Logistics portfolio", "icon": "M3 7h18v10H3zM7 7V4h10v3", "tier": "high", "expected_grade": "A", "profile": {"type": "institution", "name": "Shun Chi Logistics Holdings Ltd", "name_cn": "順馳物流控股有限公司", "br_no": "BR-62819403", "br_issue_date": "2012-04-18", "br_status": "Valid · In-force", "cr_no": "CR-1729384", "incorporation_date": "2012-03-30", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "20/F, TOWER 535, 535 CAUSEWAY ROAD, CAUSEWAY BAY, HONG KONG", "registered_capital_hkd": 10000000, "paid_up_capital_hkd": 10000000, "logo_color": "#C7A951", "logo_initials": "SC", "industry": "物流倉儲", "industry_code": "ISIC 4923 · Freight transport by road", "industry_risk": "Medium", "esg_score": 62, "loan_amount": 25000000, "loan_term_months": 36, "loan_purpose": "車隊擴張", "email": "info@shunchi-logistics.com.hk", "email_secondary": "credit@shunchi-logistics.com.hk", "domain": "shunchi-logistics.com.hk", "phone": "+852 2898 7281", "directors": [{"name": "WONG CHI KEUNG", "name_cn": "王志强", "role": "Director · Chairman", "appt_date": "2012-03-30", "shareholding_pct": 45, "nationality": "HKSAR", "other_directorships": 3, "pep": false, "ubo": true, "hkid": "A334829(1)", "email": "chi.wong@shunchi-logistics.com.hk"}, {"name": "CHENG MEI FUN", "name_cn": "鄭美芬", "role": "Director · CEO", "appt_date": "2012-03-30", "shareholding_pct": 30, "nationality": "HKSAR", "other_directorships": 2, "pep": false, "ubo": true, "hkid": "E712449(6)", "email": "mei.cheng@shunchi-logistics.com.hk"}, {"name": "LEE KA WAH", "name_cn": "李嘉華", "role": "Director · CFO", "appt_date": "2014-08-12", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": false, "hkid": "G182746(0)", "email": "kw.lee@shunchi-logistics.com.hk"}], "shareholders": [{"name": "WONG CHI KEUNG", "name_cn": "王志强", "shares_pct": 45, "class": "Ordinary"}, {"name": "CHENG MEI FUN", "name_cn": "鄭美芬", "shares_pct": 30, "class": "Ordinary"}, {"name": "Pacific Logistic Capital LP", "shares_pct": 20, "class": "Preference"}, {"name": "Employee ESOP", "shares_pct": 5, "class": "Ordinary · options"}], "litigation": [{"case_id": "HCPI 1234/2024", "court": "High Court · PI", "year": 2024, "role": "Defendant", "type": "Breach of contract · fleet lease", "claim_hkd": 2500000, "status": "Settled · 2025-02-14", "severity": "low", "summary": "Sub-lease dispute, settled at HK$1.4M"}], "charges": [{"id": "CHG-001", "type": "All-monies mortgage", "lender": "HSBC Hong Kong", "amount_hkd": 50000000, "registered": "2023-08-15", "status": "Outstanding", "collateral": "Property · 20/F, TOWER 535, Causeway Bay"}, {"id": "CHG-002", "type": "Floating charge", "lender": "Hang Seng Bank", "amount_hkd": 30000000, "registered": "2021-03-22", "status": "Outstanding", "collateral": "All assets · undertakings · goodwill"}], "relationships": [{"name": "Shun Chi Logistics (Shenzhen) Ltd", "name_cn": "顺驰物流(深圳)有限公司", "type": "Subsidiary · 100%", "country": "PRC · Shenzhen", "incorporation": "2014-11-22", "cr_no": "PRC-91440300MA5G7X9P3K", "purpose": "Cross-border fleet operations"}, {"name": "SC Property Holdings Ltd", "name_cn": "順馳物業控股有限公司", "type": "Subsidiary · 100%", "country": "BVI", "incorporation": "2013-06-08", "cr_no": "BVI-198472", "purpose": "Warehouse property holding"}, {"name": "Greater Bay Freight Alliance", "name_cn": "大灣區貨運聯盟", "type": "JV · 30%", "country": "HKG", "incorporation": "2020-09-15", "cr_no": "JV-2020-0917", "purpose": "Consortium for cross-border consolidation"}], "financials": {"revenue_3y": [280000000, 265000000, 248000000], "ebitda_margin": 0.142, "current_ratio": 1.85, "debt_to_equity": 0.62, "interest_coverage": 6.4, "auditor": "KPMG · unqualified", "last_audit_date": "2025-12-15"}, "banking": [{"bank": "HSBC Hong Kong", "type": "Primary · Operating", "since": "2012", "facilities": "Term loan HK$50M + revolving credit HK$30M"}, {"bank": "Hang Seng Bank", "type": "Trade finance", "since": "2015", "facilities": "Letter of credit · trust receipt"}, {"bank": "Bank of China (HK)", "type": "Cross-border RMB", "since": "2018", "facilities": "GBA bridge facility HK$25M"}], "headcount": 142, "headcount_trend": "+8% YoY", "fleet_size": "82 trucks · 14 warehouses · 4 cross-border depots"}}, {"id": "ins-02", "ix": "樣本 02", "name": "美心餐飲集團", "cn": "連鎖餐飲組合", "en": "F&B chain portfolio", "icon": "M5 21V8l7-4 7 4v13M9 21v-6h6v6M9 11h.01M15 11h.01", "tier": "mid", "expected_grade": "C", "profile": {"type": "institution", "name": "Maxim's Caterers Ltd", "name_cn": "美心餐飲集團有限公司", "br_no": "BR-71849205", "br_issue_date": "1998-02-04", "br_status": "Valid · In-force", "cr_no": "CR-0612847", "incorporation_date": "1998-01-22", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "12/F, MAXIM'S CENTRE, 17-21 CONNAUGHT ROAD CENTRAL, HONG KONG", "registered_capital_hkd": 50000000, "paid_up_capital_hkd": 50000000, "logo_color": "#B91C1C", "logo_initials": "MX", "industry": "餐飲零售", "industry_code": "ISIC 5610 · Restaurants & mobile food", "industry_risk": "Medium-High", "esg_score": 54, "loan_amount": 18000000, "loan_term_months": 24, "loan_purpose": "門市翻新", "email": "corp@maxims.com.hk", "email_secondary": "ir@maxims.com.hk", "domain": "maxims.com.hk", "phone": "+852 2526 4811", "directors": [{"name": "WU WING HUNG", "name_cn": "鄔永鴻", "role": "Director · Chairman & CEO", "appt_date": "1998-01-22", "shareholding_pct": 38, "nationality": "HKSAR", "other_directorships": 7, "pep": false, "ubo": true, "hkid": "D123456(7)", "email": "wing.wu@maxims.com.hk"}, {"name": "WU YUEN MAN", "name_cn": "鄔婉雯", "role": "Director · Deputy CEO", "appt_date": "2005-04-11", "shareholding_pct": 22, "nationality": "HKSAR", "other_directorships": 4, "pep": false, "ubo": true, "hkid": "D654321(2)", "email": "yuen.wu@maxims.com.hk"}, {"name": "CHAN TAK SHING", "name_cn": "陳德成", "role": "Director · COO", "appt_date": "2010-09-03", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": false, "hkid": "E987654(3)", "email": "tak.chan@maxims.com.hk"}, {"name": "LIU KAR FAI", "name_cn": "廖家輝", "role": "Independent NED", "appt_date": "2018-06-15", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 5, "pep": false, "ubo": false, "hkid": "G456123(8)", "email": "kf.liu@maxims.com.hk"}, {"name": "CHOW PUI YI", "name_cn": "周佩儀", "role": "Director · CFO", "appt_date": "2014-11-20", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 2, "pep": false, "ubo": false, "hkid": "E321987(4)", "email": "pyi.chow@maxims.com.hk"}], "shareholders": [{"name": "WU WING HUNG", "name_cn": "鄔永鴻", "shares_pct": 38, "class": "Ordinary"}, {"name": "WU YUEN MAN", "name_cn": "鄔婉雯", "shares_pct": 22, "class": "Ordinary"}, {"name": "Maxim Holdings (PTC) Ltd", "shares_pct": 25, "class": "Ordinary · family trust"}, {"name": "Public float · institutional", "shares_pct": 15, "class": "Ordinary"}], "litigation": [{"case_id": "DCCC 891/2023", "court": "District Court · CC", "year": 2023, "role": "Defendant", "type": "Food safety · Centre for Food Safety prosecution", "claim_hkd": 800000, "status": "Conviction · fined HK$120K · 2024-03", "severity": "medium", "summary": "FSS contravention at Tuen Mun branch; corrective action complete"}, {"case_id": "HCPI 5821/2022", "court": "High Court · PI", "year": 2022, "role": "Defendant", "type": "Wrongful dismissal · former GM", "claim_hkd": 6500000, "status": "Dismissed · 2024-08", "severity": "low", "summary": "Claim dismissed with costs awarded to defendant"}, {"case_id": "LAB 142/2025", "court": "Labour Tribunal", "year": 2025, "role": "Defendant", "type": "Severance dispute · 3 kitchen staff", "claim_hkd": 420000, "status": "Settled · HK$280K · 2025-04", "severity": "low", "summary": "Routine, settled at mediation"}], "charges": [{"id": "CHG-101", "type": "All-monies mortgage", "lender": "Standard Chartered HK", "amount_hkd": 80000000, "registered": "2019-06-10", "status": "Outstanding", "collateral": "Property · 12/F, Maxim's Centre, Central"}], "relationships": [{"name": "Maxim Bakeries (HK) Ltd", "name_cn": "美心餅店有限公司", "type": "Subsidiary · 100%", "country": "HKSAR", "incorporation": "2001-08-14", "cr_no": "CR-3382014", "purpose": "Bakery operations · 240 outlets"}, {"name": "MX Catering (Macau) Ltd", "name_cn": "美心餐飲(澳門)有限公司", "type": "Subsidiary · 80%", "country": "Macau", "incorporation": "2010-03-08", "cr_no": "MACAU-28147", "purpose": "Macau franchise operations"}, {"name": "Great Wall Foodcourt JV", "name_cn": "長城美食廣場合資", "type": "JV · 50%", "country": "PRC · Shanghai", "incorporation": "2018-04-22", "cr_no": "PRC-91310115MA1K3X8Y", "purpose": "Mainland food court operator"}, {"name": "Wu Family Office Ltd", "name_cn": "鄔氏家族辦公室有限公司", "type": "Common director · related", "country": "BVI", "incorporation": "2015-12-01", "cr_no": "BVI-338291", "purpose": "Family wealth vehicle · UBO holding"}], "financials": {"revenue_3y": [450000000, 422000000, 398000000], "ebitda_margin": 0.094, "current_ratio": 1.42, "debt_to_equity": 0.91, "interest_coverage": 4.1, "auditor": "BDO · unqualified", "last_audit_date": "2025-11-28"}, "banking": [{"bank": "Standard Chartered HK", "type": "Primary · Operating", "since": "1998", "facilities": "Term loan HK$80M + revolving HK$40M"}, {"bank": "HSBC Hong Kong", "type": "Trade finance", "since": "2002", "facilities": "Multi-currency cash pool"}], "headcount": 2840, "headcount_trend": "-3% YoY (post-rationalisation)", "fleet_size": "185 outlets HK + 24 Macau + 8 PRC JV"}}, {"id": "ins-03", "ix": "樣本 03", "name": "新創科技公司", "cn": "初創 · SaaS", "en": "Tech startup", "icon": "M9 4h6v4H9zM5 8h14v12H5z", "tier": "low", "expected_grade": "F", "profile": {"type": "institution", "name": "NovaTech Solutions Ltd", "name_cn": "新創科技有限公司", "br_no": "BR-92184756", "br_issue_date": "2024-08-22", "br_status": "Valid · In-force", "cr_no": "CR-3382741", "incorporation_date": "2024-07-15", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "UNIT 1208, 12/F, TOWER B, 22 YIP HING STREET, WONG CHUK HANG, HONG KONG", "registered_capital_hkd": 1000000, "paid_up_capital_hkd": 250000, "logo_color": "#3B82F6", "logo_initials": "NT", "industry": "軟件 / SaaS", "industry_code": "ISIC 5820 · Software publishing", "industry_risk": "High (early-stage)", "esg_score": 71, "loan_amount": 3000000, "loan_term_months": 18, "loan_purpose": "現金流週轉", "email": "hello@novatech.hk", "email_secondary": "founders@novatech.hk", "domain": "novatech.hk", "phone": "+852 2345 6789", "directors": [{"name": "CHAN HO TIN", "name_cn": "陳浩天", "role": "Director · Co-founder & CTO", "appt_date": "2024-07-15", "shareholding_pct": 48, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": true, "hkid": "K771203(4)", "email": "hotin@novatech.hk"}, {"name": "LI ZI YING", "name_cn": "李子瑩", "role": "Director · Co-founder & CEO", "appt_date": "2024-07-15", "shareholding_pct": 32, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": true, "hkid": "K884201(7)", "email": "ziying@novatech.hk"}], "shareholders": [{"name": "CHAN HO TIN", "name_cn": "陳浩天", "shares_pct": 48, "class": "Ordinary"}, {"name": "LI ZI YING", "name_cn": "李子瑩", "shares_pct": 32, "class": "Ordinary"}, {"name": "HK Tech Seed Fund I LP", "shares_pct": 15, "class": "Preference · Series Seed"}, {"name": "Cyberport Incubation Holding", "shares_pct": 5, "class": "Ordinary · non-voting"}], "litigation": [], "charges": [], "relationships": [{"name": "NovaTech (Shenzhen) Technology Co Ltd", "name_cn": "新创科技(深圳)有限公司", "type": "Subsidiary · 100% (WFOE)", "country": "PRC · Shenzhen", "incorporation": "2024-12-10", "cr_no": "PRC-91440300MAE4Q1X2N", "purpose": "Engineering team · cost base"}], "financials": {"revenue_3y": [0, 0, 8500000], "ebitda_margin": -0.42, "current_ratio": 0.85, "debt_to_equity": 0, "interest_coverage": 0, "auditor": "n/a (revenue < HK$10M · audit-exempt)", "last_audit_date": "n/a"}, "banking": [{"bank": "ZA Bank", "type": "Operating account", "since": "2024", "facilities": "Virtual bank · HK$500K operating line"}], "headcount": 9, "headcount_trend": "+3 in 6 mo (5 HK + 4 SZ)", "fleet_size": "Cloud SaaS · 47 paying customers · ARR HK$8.5M"}}, {"id": "ins-04", "ix": "樣本 04", "name": "某個人信貸組合", "cn": "消費金融 NPL 包", "en": "Consumer NPL pool", "icon": "M3 3h18v18H3zM3 9h18M9 21V9", "tier": "mid", "expected_grade": "D", "profile": {"type": "institution", "name": "Pacific Consumer Finance Pool 2026-A", "name_cn": "太平洋消費金融資產組合 2026-A", "br_no": "POOL-2026-A-014", "br_issue_date": "2026-02-01", "br_status": "Valid · SPV · ring-fenced", "cr_no": "SPV-2026-A-014", "incorporation_date": "2026-01-22", "incorporation_place": "Cayman Islands · SPV", "company_type": "Segregated portfolio company · SPV", "status": "Active · Live · ring-fenced", "registered_office": "C/O WALKERS CORPORATE LIMITED, CAYMAN CORPORATE CENTRE, 27 HOSPITAL ROAD, GEORGE TOWN, GRAND CAYMAN", "registered_capital_hkd": 100000, "paid_up_capital_hkd": 100000, "logo_color": "#6B7280", "logo_initials": "PC", "industry": "消費金融 NPL", "industry_code": "ISIC 6492 · Other credit granting", "industry_risk": "High (NPL portfolio)", "esg_score": 48, "loan_amount": 48500000, "loan_term_months": 12, "loan_purpose": "資產包收購", "email": "trustee@pacific-cf.hk", "email_secondary": "—", "domain": "pacific-cf.hk", "phone": "+852 3996 7100", "directors": [{"name": "PTC Corporate Services (Cayman) Ltd", "name_cn": "—", "role": "Corporate Director (sole)", "appt_date": "2026-01-22", "shareholding_pct": 0, "nationality": "Cayman", "other_directorships": 142, "pep": false, "ubo": false, "hkid": "n/a", "email": "—"}], "shareholders": [{"name": "Pacific Consumer Finance Holdings", "shares_pct": 100, "class": "Ordinary · SPV beneficiary"}], "litigation": [{"case_id": "Pool-level · 14,832 underlying accounts", "court": "Various · underlying", "year": 2025, "role": "Creditor (assigned)", "type": "Consumer NPL · assigned", "claim_hkd": 48500000, "status": "Active collection · 23% recovery YTD", "severity": "high", "summary": "NPL pool: 14,832 unsecured personal loans · avg balance HK$3,267 · avg DPD 187 days at cut-off"}], "charges": [{"id": "CHG-POOL-001", "type": "Pledge over receivables", "lender": "Lead arranger · HSBC", "amount_hkd": 60000000, "registered": "2026-02-10", "status": "Outstanding", "collateral": "Pool assets · 14,832 underlying unsecured personal loans"}], "relationships": [{"name": "Pacific Consumer Finance Holdings", "name_cn": "—", "type": "Originator · parent (100%)", "country": "BVI", "incorporation": "2018-03-15", "cr_no": "BVI-228471", "purpose": "Originator of pool · retains servicing"}, {"name": "HSBC Institutional Trust Services", "name_cn": "—", "type": "Trustee", "country": "HKSAR", "incorporation": "1972-01-01", "cr_no": "TR-0001", "purpose": "Pool trustee · NAV verification · waterfall admin"}, {"name": "Pacific Servicing (HK) Ltd", "name_cn": "太平洋催收服務有限公司", "type": "Servicer", "country": "HKSAR", "incorporation": "2019-06-22", "cr_no": "CR-2918472", "purpose": "Collections agency · 24-month servicing agreement"}], "financials": {"revenue_3y": [0, 0, 0], "ebitda_margin": 0, "current_ratio": "n/a · pool", "debt_to_equity": "n/a · pool", "interest_coverage": "n/a · pool", "auditor": "PwC · pool audit · unqualified", "last_audit_date": "2026-04-30"}, "banking": [{"bank": "HSBC Hong Kong", "type": "Pool account · segregated", "since": "2026", "facilities": "Waterfall account · HK$60M facility"}], "headcount": 0, "headcount_trend": "n/a (serviced externally)", "fleet_size": "14,832 underlying accounts · 23% recovery YTD · WAC 187 DPD"}}];
 
 // ============================================================
 // Credit report generator (JS port of credit_sample.py)
@@ -2395,6 +2488,7 @@ function severityBadge(s) {
   return '<span class="sev sev-low">LOW</span>';
 }
 
+
 function corpSeal(r, size) {
   size = size || 56;
   return `<div class="corp-seal" style="width:${size}px;height:${size}px;background:${r.logo_color}">
@@ -2402,6 +2496,157 @@ function corpSeal(r, size) {
     <div class="corp-seal-tx">${escapeHtml(r.logo_initials)}</div>
   </div>`;
 }
+
+// ---------- Procedural face portrait (deterministic per profile.face) ----------
+function renderFace(face, w, h) {
+  if (!face) return '';
+  w = w || 100;
+  h = h || 120;
+  const f = face;
+  const skin = f.skin || '#E8B89A';
+  const skinShadow = f.skin_shadow || '#C99A7A';
+  const hair = f.hair || '#1A1A1A';
+  const eye = f.eye || '#3D2817';
+  const style = f.hair_style || 'short';
+  const hasGlasses = !!f.has_glasses;
+  const glassesStyle = f.glasses_style || 'rect';
+  const facialHair = f.facial_hair || 'none';
+  const lipstick = !!f.lipstick;
+  const lipColor = f.lipstick_color || '#B23A48';
+  const collar = f.collar || '#1E3A5F';
+  const collarAccent = f.collar_accent || '#F5F5F5';
+  const bg = f.background || '#1A2D5C';
+  const isFemale = f.hair_length === 'long' || f.hair_length === 'medium';
+  const isLongHair = f.hair_length === 'long';
+
+  // Hair shape based on style
+  let hairShape = '';
+  if (style === 'bald') {
+    // no hair
+  } else if (style === 'short' || style === 'side-part') {
+    // short cropped
+    hairShape = `
+      <path d="M 25 50 Q 25 18 50 16 Q 75 18 75 50 Q 75 36 67 32 Q 60 30 50 32 Q 40 30 33 32 Q 25 36 25 50 Z" fill="${hair}"/>
+      ${style === 'side-part' ? '<path d="M 50 16 Q 55 22 52 32 L 48 30 Q 47 22 50 16 Z" fill="#000" opacity="0.4"/>' : ''}
+    `;
+  } else if (style === 'long' && isLongHair) {
+    // long hair flowing down
+    hairShape = `
+      <path d="M 22 50 Q 22 14 50 12 Q 78 14 78 50 L 80 95 Q 75 100 70 95 L 70 60 Q 65 35 50 30 Q 35 35 30 60 L 30 95 Q 25 100 20 95 Z" fill="${hair}"/>
+      <path d="M 28 50 Q 30 25 50 22 Q 70 25 72 50 Q 70 38 50 36 Q 30 38 28 50 Z" fill="${hair}" opacity="0.9"/>
+    `;
+  } else if (style === 'messy') {
+    // messy young hair
+    hairShape = `
+      <path d="M 23 48 Q 24 16 50 14 Q 76 16 77 48 Q 76 32 70 30 L 67 36 L 62 28 L 57 34 L 52 26 L 47 32 L 42 28 L 37 34 L 32 28 L 27 36 Q 24 32 23 48 Z" fill="${hair}"/>
+    `;
+  } else {
+    // default short
+    hairShape = `<path d="M 25 50 Q 25 18 50 16 Q 75 18 75 50 Q 75 36 67 32 Q 50 30 33 32 Q 25 36 25 50 Z" fill="${hair}"/>`;
+  }
+
+  // Eyes (white with iris + pupil + catchlight)
+  const eyeY = 56;
+  const eyeShape = `
+    <ellipse cx="40" cy="${eyeY}" rx="4" ry="2.5" fill="white"/>
+    <ellipse cx="60" cy="${eyeY}" rx="4" ry="2.5" fill="white"/>
+    <circle cx="40" cy="${eyeY}" r="2" fill="${eye}"/>
+    <circle cx="60" cy="${eyeY}" r="2" fill="${eye}"/>
+    <circle cx="40" cy="${eyeY}" r="1" fill="#000"/>
+    <circle cx="60" cy="${eyeY}" r="1" fill="#000"/>
+    <circle cx="41" cy="${eyeY - 0.6}" r="0.6" fill="white"/>
+    <circle cx="61" cy="${eyeY - 0.6}" r="0.6" fill="white"/>
+  `;
+
+  // Eyebrows
+  const browShape = `
+    <path d="M 35 49 Q 40 47 45 49" stroke="${hair}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M 55 49 Q 60 47 65 49" stroke="${hair}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  `;
+
+  // Nose (subtle)
+  const noseShape = `
+    <path d="M 50 60 Q 48 67 49 69 Q 50 70 51 69 Q 52 67 50 60" fill="${skinShadow}" opacity="0.4"/>
+  `;
+
+  // Mouth
+  const mouthColor = lipstick ? lipColor : '#7A4530';
+  const mouthShape = lipstick
+    ? `<path d="M 44 74 Q 50 77 56 74 Q 50 76 44 74 Z" fill="${mouthColor}"/>`
+    : `<path d="M 45 74 Q 50 76 55 74" fill="none" stroke="${mouthColor}" stroke-width="1.4" stroke-linecap="round"/>`;
+
+  // Glasses
+  let glassesShape = '';
+  if (hasGlasses) {
+    if (glassesStyle === 'rect') {
+      glassesShape = `
+        <rect x="32" y="51" width="16" height="11" rx="2" fill="none" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+        <rect x="52" y="51" width="16" height="11" rx="2" fill="none" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+        <line x1="48" y1="55" x2="52" y2="55" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+        <line x1="32" y1="55" x2="29" y2="54" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+        <line x1="68" y1="55" x2="71" y2="54" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+      `;
+    } else if (glassesStyle === 'round') {
+      glassesShape = `
+        <circle cx="40" cy="56" r="8" fill="none" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+        <circle cx="60" cy="56" r="8" fill="none" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+        <line x1="48" y1="56" x2="52" y2="56" stroke="#1A1A1A" stroke-width="1.2" opacity="0.85"/>
+      `;
+    }
+  }
+
+  // Facial hair
+  let facialHairShape = '';
+  if (facialHair === 'stubble') {
+    facialHairShape = `<path d="M 38 72 Q 50 80 62 72 L 60 78 Q 50 82 40 78 Z" fill="${hair}" opacity="0.35"/>`;
+  } else if (facialHair === 'beard') {
+    facialHairShape = `<path d="M 35 70 Q 50 85 65 70 Q 65 82 60 88 L 50 92 L 40 88 Q 35 82 35 70 Z" fill="${hair}" opacity="0.7"/>`;
+  } else if (facialHair === 'mustache') {
+    facialHairShape = `<path d="M 44 73 Q 47 75 50 73 Q 53 75 56 73 Q 53 76 50 75 Q 47 76 44 73 Z" fill="${hair}" opacity="0.7"/>`;
+  }
+
+  return `
+<svg viewBox="0 0 100 120" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" class="face-svg">
+  <defs>
+    <linearGradient id="bg-${w}-${h}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${bg}" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="${bg}" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  <!-- ID-photo background -->
+  <rect width="100" height="120" fill="url(#bg-${w}-${h})"/>
+  <!-- Shirt/shoulders -->
+  <path d="M 8 120 Q 8 95 30 88 L 38 100 L 50 96 L 62 100 L 70 88 Q 92 95 92 120 Z" fill="${collar}"/>
+  <!-- Shirt collar V -->
+  <path d="M 38 100 L 50 110 L 62 100 L 58 102 L 50 105 L 42 102 Z" fill="${collarAccent}"/>
+  <!-- Neck -->
+  <rect x="42" y="78" width="16" height="20" fill="${skinShadow}"/>
+  <ellipse cx="50" cy="98" rx="9" ry="3" fill="${skinShadow}" opacity="0.6"/>
+  <!-- Ears -->
+  <ellipse cx="25" cy="58" rx="3" ry="6" fill="${skinShadow}"/>
+  <ellipse cx="75" cy="58" rx="3" ry="6" fill="${skinShadow}"/>
+  <!-- Head -->
+  <ellipse cx="50" cy="55" rx="22" ry="28" fill="${skin}"/>
+  <!-- Subtle face shadow on the right -->
+  <path d="M 50 27 Q 72 30 72 55 Q 72 80 50 83 Q 60 80 65 70 Q 70 55 65 40 Q 60 30 50 27 Z" fill="${skinShadow}" opacity="0.25"/>
+  <!-- Hair -->
+  ${hairShape}
+  <!-- Eyebrows -->
+  ${browShape}
+  <!-- Eyes -->
+  ${eyeShape}
+  <!-- Nose -->
+  ${noseShape}
+  <!-- Mouth -->
+  ${mouthShape}
+  <!-- Facial hair -->
+  ${facialHairShape}
+  <!-- Glasses -->
+  ${glassesShape}
+</svg>
+`;
+}
+
 
 
 // ---------- Rendering ----------
@@ -2418,33 +2663,66 @@ function renderSummary(r) {
     const match = bio.face_match_score ? Math.round(bio.face_match_score * 100) : null;
     const live = bio.liveness_score ? Math.round(bio.liveness_score * 100) : null;
     const chip = bio.id_chip_authentic;
+    const face = p && p.face;
+    const faceHtml = face ? `
+      <div class="bio-portrait">
+        ${renderFace(face, 96, 116)}
+        <div class="bio-match-badge ${match && match >= 95 ? 'v-good' : 'v-warn'}">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          ${match != null ? match + '%' : '—'}
+        </div>
+      </div>` : '';
+    const email = p && p.email;
+    const emailSecondary = p && p.email_secondary && p.email_secondary !== '—' ? p.email_secondary : '';
+    const phone = p && p.phone_primary;
+    const emailHtml = email ? `
+    <div class="bio-contact">
+      <div class="bio-contact-row">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="bio-email">${escapeHtml(email)}</span>
+        ${emailSecondary ? `<span class="bio-email-alt">· ${escapeHtml(emailSecondary)}</span>` : ''}
+      </div>
+      ${phone ? `<div class="bio-contact-row bio-phone-row">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="bio-phone mono">${escapeHtml(phone)}</span>
+      </div>` : ''}
+    </div>` : '';
     bioBlock = `
   <div class="bio-stamp">
     <div class="bio-head">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-      <span class="cjk">eKYC 生物識別驗證已通過</span>
-      <span class="en">Biometric verification · eKYC v2.1</span>
+      <span class="bio-head-cn cjk">eKYC 生物識別驗證已通過</span>
+      <span class="bio-head-en">Biometric verification · eKYC v2.1</span>
     </div>
-    <div class="bio-grid">
-      <div class="bio-cell">
-        <div class="bio-n ${match && match >= 95 ? 'v-good' : 'v-warn'}">${match != null ? match + '%' : '—'}</div>
-        <div class="bio-l cjk">人臉比對 / Face match</div>
+    <div class="bio-body">
+      ${faceHtml}
+      <div class="bio-data">
+        <div class="bio-grid">
+          <div class="bio-cell">
+            <div class="bio-n ${match && match >= 95 ? 'v-good' : 'v-warn'}">${match != null ? match + '%' : '—'}</div>
+            <div class="bio-l cjk">人臉比對 / Face</div>
+          </div>
+          <div class="bio-cell">
+            <div class="bio-n ${live && live >= 95 ? 'v-good' : 'v-warn'}">${live != null ? live + '%' : '—'}</div>
+            <div class="bio-l cjk">活體檢測 / Liveness</div>
+          </div>
+          <div class="bio-cell">
+            <div class="bio-n ${chip ? 'v-good' : 'v-warn'}">${chip ? '✓' : '✗'}</div>
+            <div class="bio-l cjk">晶片真偽 / Chip</div>
+          </div>
+          <div class="bio-cell">
+            <div class="bio-n v-strong">${bio.face_photo_age_est || '—'}</div>
+            <div class="bio-l cjk">人臉年齡 / Age est.</div>
+          </div>
+        </div>
+        ${emailHtml}
+        <div class="bio-foot mono">
+          <span class="v-strong">${escapeHtml(bio.last_verified || '')}</span>
+          <span class="v-dim"> · ${escapeHtml(bio.device || '')}</span>
+          <span class="v-dim"> · ${escapeHtml(bio.ip_country || '')}</span>
+          ${bio.geo_match === true ? '<span class="v-good"> · geo ✓</span>' : bio.geo_match ? '<span class="v-dim"> · ' + escapeHtml(bio.geo_match) + '</span>' : ''}
+        </div>
       </div>
-      <div class="bio-cell">
-        <div class="bio-n ${live && live >= 95 ? 'v-good' : 'v-warn'}">${live != null ? live + '%' : '—'}</div>
-        <div class="bio-l cjk">活體檢測 / Liveness</div>
-      </div>
-      <div class="bio-cell">
-        <div class="bio-n ${chip ? 'v-good' : 'v-warn'}">${chip ? '✓' : '✗'}</div>
-        <div class="bio-l cjk">晶片真偽 / Chip</div>
-      </div>
-      <div class="bio-cell">
-        <div class="bio-n v-good">${bio.face_photo_age_est || '—'}</div>
-        <div class="bio-l cjk">人臉年齡 / Age est.</div>
-      </div>
-    </div>
-    <div class="bio-foot mono small muted">
-      ${escapeHtml(bio.last_verified || '')} · ${escapeHtml(bio.device || '')} · ${escapeHtml(bio.ip_country || '')}${bio.geo_match === true ? ' · geo ✓' : bio.geo_match ? ' · ' + escapeHtml(bio.geo_match) : ''}
     </div>
   </div>`;
   }
@@ -2460,6 +2738,8 @@ function renderSummary(r) {
     <tr><td class="k">姓名 / Name</td><td class="v">${r.name}</td></tr>
     <tr><td class="k">出生日期 / DOB</td><td class="v">${fmtDate(r.dob)}</td></tr>
     <tr><td class="k">身份證號碼 / HKID</td><td class="v">香港身份證號碼 ${r.hkid}</td></tr>
+    ${p && p.email ? `<tr><td class="k">電郵 / Email</td><td class="v mono email-cell" colspan="3">${escapeHtml(p.email)}</td></tr>` : ''}
+    ${p && p.phone_primary ? `<tr><td class="k">電話 / Phone</td><td class="v mono" colspan="3">${escapeHtml(p.phone_primary)}</td></tr>` : ''}
     ${p && p.id_issue_date ? `<tr><td class="k">身份證簽發 / Issued</td><td class="v">${escapeHtml(p.id_issue_date)}</td>
         <td class="k">簽發地 / Place</td><td class="v">${escapeHtml(p.id_issue_place || '')}</td></tr>` : ''}
     ${p && p.nationality ? `<tr><td class="k">國籍 / Nationality</td><td class="v" colspan="3">${escapeHtml(p.nationality)}</td></tr>` : ''}
@@ -2667,6 +2947,9 @@ function renderInstProfile(r) {
 
   <div class="rpt-sub">法定身份 / Statutory identity</div>
   <table class="rpt-table">
+    ${r.email ? `<tr><td class="k">公司電郵 / Email</td><td class="v mono email-cell" colspan="3">${escapeHtml(r.email)}</td></tr>` : ''}
+    ${r.phone ? `<tr><td class="k">公司電話 / Phone</td><td class="v mono">${escapeHtml(r.phone)}</td>
+        <td class="k">網域 / Domain</td><td class="v mono">${escapeHtml(r.domain || '—')}</td></tr>` : ''}
     <tr><td class="k">商業登記號 / BR</td><td class="v mono">${escapeHtml(r.br_no)}</td>
         <td class="k">簽發日期 / Issued</td><td class="v">${escapeHtml(r.br_issue_date)}</td></tr>
     <tr><td class="k">公司註冊 / CR</td><td class="v mono">${escapeHtml(r.cr_no)}</td>
@@ -2717,6 +3000,7 @@ function renderInstDirectors(r) {
       <td class="v">${escapeHtml(d.nationality)}</td>
       <td class="v">${d.other_directorships || 0}</td>
       <td class="v">${d.ubo ? '<span class="ubo-badge">UBO</span>' : ''}</td>
+      <td class="v mono small email-cell">${d.email && d.email !== '—' ? escapeHtml(d.email) : '<span class="muted">—</span>'}</td>
     </tr>
   `).join('');
 
@@ -2940,16 +3224,35 @@ function loadSample() {
   const coverSeal = document.getElementById('coverSeal');
   if (isInst) {
     coverTitle.textContent = '商業信貸報告 · Commercial Credit Report';
-    coverName.innerHTML = `<b>${escapeHtml(r.name_cn || r.name)}</b><br><span class="mono small">${escapeHtml(r.cr_no)} · ${escapeHtml(r.br_no)}</span>`;
-    coverMeta.textContent = `成立 ${r.incorporation_date} · 報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
-    coverSeal.innerHTML = corpSeal(r, 96);
+    const sc = activeScenario && activeScenario.profile;
+    const email = sc && sc.email;
+    const phone = sc && sc.phone;
+    let coverHtml = `<div class="cover-line-1">${escapeHtml(r.name_cn || r.name)}</div>`;
+    coverHtml += `<div class="cover-line-2 mono small">${escapeHtml(r.cr_no)} · ${escapeHtml(r.br_no)}</div>`;
+    if (email) coverHtml += `<div class="cover-line-3"><span class="cover-email mono small">${escapeHtml(email)}</span></div>`;
+    coverName.innerHTML = coverHtml;
+    let metaHtml = `成立 ${r.incorporation_date} · 報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
+    if (phone) metaHtml += `<br><span class="mono small">${escapeHtml(phone)}</span>`;
+    coverMeta.innerHTML = metaHtml;
+    coverSeal.innerHTML = `<div class="cover-emblem">${corpSeal(r, 96)}</div>`;
     coverSeal.style.display = '';
     currentTab = 'inst-profile';
   } else {
     coverTitle.textContent = '個人信貸報告 · Personal Credit Report';
-    coverName.textContent = `${r.name}，香港身份證號碼 ${r.hkid}`;
-    coverMeta.textContent = `報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
-    coverSeal.style.display = 'none';
+    const scProfile = activeScenario && activeScenario.profile;
+    const face = scProfile && scProfile.face;
+    const email = scProfile && scProfile.email;
+    let coverHtml = `<div class="cover-line-1">${escapeHtml(r.name)}</div>`;
+    coverHtml += `<div class="cover-line-2 mono small">香港身份證號碼 ${escapeHtml(r.hkid)}</div>`;
+    if (email) coverHtml += `<div class="cover-line-3 mono small cover-email">${escapeHtml(email)}</div>`;
+    coverName.innerHTML = coverHtml;
+    coverMeta.innerHTML = `報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
+    if (face) {
+      coverSeal.innerHTML = `<div class="cover-portrait">${renderFace(face, 108, 130)}</div>`;
+      coverSeal.style.display = '';
+    } else {
+      coverSeal.style.display = 'none';
+    }
     currentTab = 'summary';
   }
   // Make sure currentTab is valid for the new kind

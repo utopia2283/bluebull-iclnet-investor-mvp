@@ -1117,6 +1117,59 @@ h3 { font-size: 20px; line-height: 1.3; }
 .grade-C, .grade-D { color: var(--gold); }
 .grade-E, .grade-F { color: var(--red-2); }
 .grade-J { color: var(--red); }
+/* Sample card depth preview */
+.sc-depth {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--line-2);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.sc-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.sc-bio { gap: 4px; }
+.sc-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 7px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bg-3);
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+}
+.sc-bio-score { color: var(--green); border-color: rgba(34, 197, 94, 0.3); }
+.sc-meta-line {
+  font-size: 11px; color: var(--ink-2);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.01em;
+}
+.sc-meta-line.muted { color: var(--ink-3); }
+.sc-meta-line .dot-sep { color: var(--ink-3); margin: 0 2px; }
+
+/* Institution depth: corporate seal + stats */
+.sc-corp-line { display: flex; align-items: center; gap: 10px; }
+.sc-seal {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15), 0 0 0 1px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+.sc-corp-id { display: flex; align-items: center; gap: 4px; min-width: 0; flex: 1; }
+.sc-stat-line { gap: 8px; }
+.sc-stat {
+  display: inline-flex; align-items: baseline; gap: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink-2);
+}
+.sc-stat-n { font-size: 13px; font-weight: 600; color: var(--ink); }
+.sc-stat-l { font-size: 10px; color: var(--ink-3); }
+.sc-sev-low .sc-stat-n { color: var(--green); }
+.sc-sev-mid .sc-stat-n { color: var(--gold); }
+.sc-sev-high .sc-stat-n { color: var(--red-2); }
 
 .custom-toggle { margin: 0 0 16px; }
 .custom-toggle .btn { background: transparent; }
@@ -1380,6 +1433,285 @@ h3 { font-size: 20px; line-height: 1.3; }
   min-height: 60px;
 }
 .gba-readout .ix { color: var(--gold); margin-right: 10px; }
+/* ============================================================
+   Institutional report + cover seal
+   ============================================================ */
+
+/* Cover with optional seal */
+.rpt-cover-body {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; margin-top: 14px;
+}
+.rpt-cover-text { flex: 1; min-width: 0; }
+.rpt-cover-seal { flex-shrink: 0; }
+
+/* Corporate seal */
+.corp-seal {
+  position: relative;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.18),
+    inset 0 0 0 4px rgba(0,0,0,0.10),
+    0 0 0 1px rgba(0,0,0,0.4),
+    0 8px 24px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.corp-seal-ring {
+  position: absolute; inset: 6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.35);
+  pointer-events: none;
+}
+.corp-seal-tx { position: relative; z-index: 1; font-size: 18px; }
+
+/* Institution header inside the report */
+.inst-head {
+  display: flex; align-items: center; gap: 20px;
+  padding: 18px 20px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+}
+.inst-head-meta { flex: 1; min-width: 0; }
+.inst-name { font-size: 18px; font-weight: 600; color: var(--ink); }
+.inst-name-cn { font-size: 14px; color: var(--ink-2); margin-top: 2px; }
+.inst-id-line { color: var(--ink-3); margin-top: 6px; letter-spacing: 0.02em; }
+
+.inst-head-grade {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  flex-shrink: 0;
+}
+.grade-pill {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px; font-weight: 700;
+  color: var(--bg);
+}
+.grade-pill.grade-A, .grade-pill.grade-B { background: var(--green); }
+.grade-pill.grade-C, .grade-pill.grade-D { background: var(--gold); }
+.grade-pill.grade-E, .grade-pill.grade-F { background: var(--red-2); }
+.grade-pill.grade-J { background: var(--red); }
+.grade-num {
+  font-size: 12px; color: var(--ink-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+/* Litigation summary */
+.lit-summary {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin: 16px 0 24px;
+}
+.lit-cell {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.lit-n { font-size: 26px; font-weight: 700; color: var(--ink); font-family: 'Space Grotesk', sans-serif; }
+.lit-l { font-size: 11px; color: var(--ink-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+.lit-cell.lit-high { border-color: rgba(239, 68, 68, 0.3); }
+.lit-cell.lit-high .lit-n { color: var(--red); }
+.lit-cell.lit-mid { border-color: rgba(199, 169, 81, 0.3); }
+.lit-cell.lit-mid .lit-n { color: var(--gold); }
+.lit-cell.lit-low { border-color: rgba(34, 197, 94, 0.3); }
+.lit-cell.lit-low .lit-n { color: var(--green); }
+
+/* Severity badges (in litigation table) */
+.sev {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.sev-high { background: rgba(239, 68, 68, 0.18); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
+.sev-mid  { background: rgba(199, 169, 81, 0.18); color: #F4D58D; border: 1px solid rgba(199,169,81,0.3); }
+.sev-low  { background: rgba(34, 197, 94, 0.18); color: #86EFAC; border: 1px solid rgba(34,197,94,0.3); }
+
+/* Directors table */
+.rpt-dir th {
+  background: var(--bg-3);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  padding: 10px 8px;
+}
+.rpt-dir td { padding: 12px 8px; vertical-align: top; }
+.dir-name { font-weight: 600; color: var(--ink); font-size: 13px; }
+.dir-name-cn { font-size: 11px; margin-top: 2px; }
+.role-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bg-3);
+  border: 1px solid var(--line-2);
+  font-size: 11px;
+  color: var(--ink-2);
+}
+.ubo-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(199, 169, 81, 0.18);
+  color: var(--gold);
+  border: 1px solid rgba(199,169,81,0.3);
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+/* Litigation / Charges table */
+.rpt-lit th, .rpt-chg th {
+  background: var(--bg-3);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  padding: 10px 8px;
+  text-align: left;
+}
+.rpt-lit td, .rpt-chg td { padding: 10px 8px; vertical-align: top; }
+.rpt-chg tfoot td { padding: 14px 8px; border-top: 2px solid var(--line-2); background: var(--bg-2); }
+
+/* Related parties */
+.rel-group { margin-top: 18px; }
+.rel-group-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.rel-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.rel-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  transition: all 0.2s var(--ease);
+}
+.rel-card:hover {
+  border-color: var(--gold-soft);
+  background: var(--bg-3);
+}
+.rel-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.rel-name-cn { font-size: 11px; margin-top: 2px; }
+.rel-type {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 8px;
+  background: var(--bg-3);
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--ink-2);
+  font-family: 'JetBrains Mono', monospace;
+}
+.rel-meta { margin-top: 8px; display: flex; gap: 4px; align-items: baseline; }
+.rel-cr { color: var(--ink-3); margin-top: 4px; word-break: break-all; }
+.rel-purpose { margin-top: 6px; line-height: 1.4; }
+
+/* Revenue chart */
+.fy-chart {
+  display: flex; align-items: flex-end; gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  height: 160px;
+  margin: 12px 0;
+}
+.fy-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; }
+.fy-bar {
+  width: 60%; min-width: 30px;
+  background: linear-gradient(180deg, var(--gold) 0%, rgba(199,169,81,0.4) 100%);
+  border-radius: 4px 4px 0 0;
+  border: 1px solid var(--gold);
+  border-bottom: none;
+  box-shadow: 0 0 12px rgba(199, 169, 81, 0.18);
+}
+.fy-val {
+  font-size: 11px; color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.fy-lbl { font-size: 10px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
+
+/* Cover seal layout for mobile */
+@media (max-width: 540px) {
+  .rpt-cover-body { flex-direction: column-reverse; align-items: flex-start; }
+  .rpt-cover-seal { display: none; }  /* hide seal on mobile to save space */
+  .lit-summary { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Biometric stamp (eKYC verification) */
+.bio-stamp {
+  margin: 16px 0 24px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, var(--bg-2) 60%);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+.bio-stamp::before {
+  content: "✓ eKYC";
+  position: absolute; top: -8px; right: 16px;
+  background: var(--green);
+  color: var(--bg);
+  font-size: 9px; font-weight: 700;
+  padding: 3px 8px; border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+}
+.bio-head {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--green);
+  margin-bottom: 14px;
+}
+.bio-head .en { color: var(--ink-3); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+.bio-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.bio-cell {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  text-align: center;
+}
+.bio-n { font-size: 20px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+.bio-l { font-size: 10px; color: var(--ink-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.bio-foot { padding-top: 8px; border-top: 1px solid var(--line-2); }
+
+@media (max-width: 540px) {
+  .bio-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 </style>
 </head>
@@ -1567,17 +1899,27 @@ h3 { font-size: 20px; line-height: 1.3; }
             <img src="assets/logo-240.jpg" alt="BlueBull">
             <span>BlueBull · ICLNet²</span>
           </div>
-          <div class="rpt-cover-title">個人信貸報告 · Personal Credit Report</div>
-          <div class="rpt-cover-line" id="coverName">—</div>
-          <div class="rpt-cover-line muted" id="coverMeta">—</div>
+          <div class="rpt-cover-body">
+            <div class="rpt-cover-text">
+              <div class="rpt-cover-title" id="coverTitle">個人信貸報告 · Personal Credit Report</div>
+              <div class="rpt-cover-line" id="coverName">—</div>
+              <div class="rpt-cover-line muted" id="coverMeta">—</div>
+            </div>
+            <div class="rpt-cover-seal" id="coverSeal" style="display:none;"></div>
+          </div>
         </div>
 
         <div class="rpt-tabs" id="rptTabs">
-          <button class="rpt-tab active" data-tab="summary">Summary · 總覽</button>
-          <button class="rpt-tab" data-tab="personal">Personal · 個人</button>
-          <button class="rpt-tab" data-tab="score">Score · 評分</button>
-          <button class="rpt-tab" data-tab="accounts">Accounts · 賬戶</button>
-          <button class="rpt-tab" data-tab="inquiries">Inquiries · 查詢</button>
+          <button class="rpt-tab active" data-kind="ind" data-tab="summary">Summary · 總覽</button>
+          <button class="rpt-tab" data-kind="ind" data-tab="personal">Personal · 個人</button>
+          <button class="rpt-tab" data-kind="ind" data-tab="score">Score · 評分</button>
+          <button class="rpt-tab" data-kind="ind" data-tab="accounts">Accounts · 賬戶</button>
+          <button class="rpt-tab" data-kind="ind" data-tab="inquiries">Inquiries · 查詢</button>
+          <button class="rpt-tab" data-kind="inst" data-tab="inst-profile" style="display:none">Profile · 概要</button>
+          <button class="rpt-tab" data-kind="inst" data-tab="inst-directors" style="display:none">Directors · 董事</button>
+          <button class="rpt-tab" data-kind="inst" data-tab="inst-litigation" style="display:none">Litigation · 訴訟</button>
+          <button class="rpt-tab" data-kind="inst" data-tab="inst-charges" style="display:none">Charges · 押記</button>
+          <button class="rpt-tab" data-kind="inst" data-tab="inst-related" style="display:none">Related · 關連</button>
         </div>
 
         <div class="rpt-body" id="rptBody">
@@ -1630,8 +1972,8 @@ let customFormData = null;
 // ============================================================
 // Sample data
 // ============================================================
-const INDIVIDUAL_SAMPLES = [{"id": "ind-01", "ix": "樣本 01", "name": "陳大文 · MTRC 工程師", "cn": "高信用優質客戶", "en": "Grade-A salaried borrower", "icon": "M3 21V7l9-4 9 4v14M9 21V11h6v10", "tier": "high", "expected_grade": "A", "profile": {"type": "individual", "name": "CHAN TAI MAN", "name_cn": "陳大文", "hkid": "A482716(3)", "dob_year": 1988, "occupation": "MTRC 工程師 · 10 年", "income_hkd": 95000, "loan_amount": 250000, "loan_term_months": 36, "loan_purpose": "個人週轉"}}, {"id": "ind-02", "ix": "樣本 02", "name": "李嘉慧 · 餐飲經營", "cn": "中小企業東主", "en": "SME operator", "icon": "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5", "tier": "mid", "expected_grade": "D", "profile": {"type": "individual", "name": "LEE KA WAI", "name_cn": "李嘉慧", "hkid": "B739284(5)", "dob_year": 1982, "occupation": "餐廳東主 · 6 年", "income_hkd": 55000, "loan_amount": 1200000, "loan_term_months": 24, "loan_purpose": "週轉金"}}, {"id": "ind-03", "ix": "樣本 03", "name": "王曉明 · 跨境大灣區", "cn": "GBA 標準合同", "en": "Cross-border GBA", "icon": "M12 2v20M2 12h20M5 5l14 14M19 5L5 19", "tier": "high", "expected_grade": "B", "profile": {"type": "individual", "name": "WANG XIAO MING", "name_cn": "王曉明", "hkid": "C561928(2)", "dob_year": 1985, "occupation": "深圳科技公司 CEO", "income_hkd": 120000, "loan_amount": 800000, "loan_term_months": 60, "loan_purpose": "香港物業按揭共同借款人"}}, {"id": "ind-04", "ix": "樣本 04", "name": "張子俊 · 應屆畢業", "cn": "薄文件新移民", "en": "Thin-file new arrival", "icon": "M12 14l9-5-9-5-9 5 9 5z", "tier": "low", "expected_grade": "J", "profile": {"type": "individual", "name": "CHEUNG TSZ CHUN", "name_cn": "張子俊", "hkid": "D294817(8)", "dob_year": 2002, "occupation": "Marketing 助理 · 1 年", "income_hkd": 22000, "loan_amount": 60000, "loan_term_months": 12, "loan_purpose": "信用建立"}}];
-const INSTITUTION_SAMPLES = [{"id": "ins-01", "ix": "樣本 01", "name": "順馳物流控股", "cn": "物流倉儲組合", "en": "Logistics portfolio", "icon": "M3 7h18v10H3zM7 7V4h10v3", "tier": "high", "expected_grade": "A", "profile": {"type": "institution", "name": "Shun Chi Logistics Holdings Ltd", "name_cn": "順馳物流控股有限公司", "br_no": "BR-62819403", "industry": "物流倉儲", "years_operating": 14, "annual_revenue_hkd": 280000000, "loan_amount": 25000000, "loan_term_months": 36, "loan_purpose": "車隊擴張"}}, {"id": "ins-02", "ix": "樣本 02", "name": "美心餐飲集團", "cn": "連鎖餐飲組合", "en": "F&B chain portfolio", "icon": "M5 21V8l7-4 7 4v13M9 21v-6h6v6M9 11h.01M15 11h.01", "tier": "mid", "expected_grade": "C", "profile": {"type": "institution", "name": "Maxim's Caterers Ltd", "name_cn": "美心餐飲集團有限公司", "br_no": "BR-71849205", "industry": "餐飲零售", "years_operating": 28, "annual_revenue_hkd": 450000000, "loan_amount": 18000000, "loan_term_months": 24, "loan_purpose": "門市翻新"}}, {"id": "ins-03", "ix": "樣本 03", "name": "新創科技公司", "cn": "初創 · SaaS", "en": "Tech startup", "icon": "M9 4h6v4H9zM5 8h14v12H5z", "tier": "low", "expected_grade": "F", "profile": {"type": "institution", "name": "NovaTech Solutions Ltd", "name_cn": "新創科技有限公司", "br_no": "BR-92184756", "industry": "軟件 / SaaS", "years_operating": 2, "annual_revenue_hkd": 8500000, "loan_amount": 3000000, "loan_term_months": 18, "loan_purpose": "現金流週轉"}}, {"id": "ins-04", "ix": "樣本 04", "name": "某個人信貸組合", "cn": "消費金融 NPL 包", "en": "Consumer NPL pool", "icon": "M3 3h18v18H3zM3 9h18M9 21V9", "tier": "mid", "expected_grade": "D", "profile": {"type": "institution", "name": "Pacific Consumer Finance Pool 2026-A", "name_cn": "太平洋消費金融資產組合 2026-A", "br_no": "POOL-2026-A-014", "industry": "消費金融 NPL", "years_operating": 0, "annual_revenue_hkd": 0, "loan_amount": 48500000, "loan_term_months": 12, "loan_purpose": "資產包收購"}}];
+const INDIVIDUAL_SAMPLES = [{"id": "ind-01", "ix": "樣本 01", "name": "陳大文 · MTRC 工程師", "cn": "高信用優質客戶", "en": "Grade-A salaried borrower", "icon": "M3 21V7l9-4 9 4v14M9 21V11h6v10", "tier": "high", "expected_grade": "A", "profile": {"type": "individual", "name": "CHAN TAI MAN", "name_cn": "陳大文", "hkid": "A482716(3)", "dob_year": 1988, "dob": "1988-02-12", "occupation": "MTRC 工程師 · 10 年", "income_hkd": 95000, "loan_amount": 250000, "loan_term_months": 36, "loan_purpose": "個人週轉", "id_issue_date": "2010-03-15", "id_issue_place": "HKSAR · Immigration Department", "nationality": "Chinese (HKSAR)", "marital": "已婚 · Married", "dependants": 2, "residence_status": "自置物業 · Owned · 8 yrs at current address", "education": "Master of Engineering, HKU", "languages": ["Cantonese", "English", "Mandarin"], "biometric": {"face_match_score": 0.987, "liveness_score": 0.992, "last_verified": "2026-06-10T14:22:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 38, "device": "iPhone 15 Pro · iOS 18.2", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 4, "social_verified": 3, "phone_career_yrs": 14, "address_stability": "Stable · 8 yrs", "vpn_or_tor": false, "device_count": 3}}}, {"id": "ind-02", "ix": "樣本 02", "name": "李嘉慧 · 餐飲經營", "cn": "中小企業東主", "en": "SME operator", "icon": "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5", "tier": "mid", "expected_grade": "D", "profile": {"type": "individual", "name": "LEE KA WAI", "name_cn": "李嘉慧", "hkid": "B739284(5)", "dob_year": 1982, "dob": "1982-11-04", "occupation": "餐廳東主 · 6 年", "income_hkd": 55000, "loan_amount": 1200000, "loan_term_months": 24, "loan_purpose": "週轉金", "id_issue_date": "2002-06-22", "id_issue_place": "HKSAR · Immigration Department", "nationality": "Chinese (HKSAR)", "marital": "已婚 · Married", "dependants": 1, "residence_status": "租住 · Rented · 3 yrs", "education": "Diploma · Hospitality Management", "languages": ["Cantonese", "English"], "biometric": {"face_match_score": 0.974, "liveness_score": 0.985, "last_verified": "2026-05-28T09:41:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 43, "device": "Samsung Galaxy S24 · Android 14", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 2, "social_verified": 1, "phone_career_yrs": 7, "address_stability": "Medium · moved twice in 5 yrs", "vpn_or_tor": false, "device_count": 2}}}, {"id": "ind-03", "ix": "樣本 03", "name": "王曉明 · 跨境大灣區", "cn": "GBA 標準合同", "en": "Cross-border GBA", "icon": "M12 2v20M2 12h20M5 5l14 14M19 5L5 19", "tier": "high", "expected_grade": "B", "profile": {"type": "individual", "name": "WANG XIAO MING", "name_cn": "王曉明", "hkid": "C561928(2)", "dob_year": 1985, "dob": "1985-07-19", "occupation": "深圳科技公司 CEO", "income_hkd": 120000, "loan_amount": 800000, "loan_term_months": 60, "loan_purpose": "香港物業按揭共同借款人", "id_issue_date": "2018-09-10", "id_issue_place": "HKSAR · Top-up · Mainland permit holder", "nationality": "Chinese · Mainland Resident with HK Top-up", "marital": "未婚 · Single", "dependants": 0, "residence_status": "自置 · Owned HK + Shenzhen", "education": "MBA · Wharton", "languages": ["Mandarin", "Cantonese", "English"], "biometric": {"face_match_score": 0.981, "liveness_score": 0.989, "last_verified": "2026-06-08T22:15:00+08:00", "verifier": "BlueBull eKYC v2.1 · GBA bridge", "id_chip_authentic": true, "face_photo_age_est": 40, "device": "Huawei Mate 60 Pro · HarmonyOS 4", "ip_country": "HKG (cross-border tunneled from SZX)", "geo_match": "Tunneled · verified via GBA bridge protocol"}, "digital_footprint": {"email_accounts": 6, "social_verified": 4, "phone_career_yrs": 9, "address_stability": "Stable · HK + SZ dual anchor", "vpn_or_tor": false, "device_count": 4}}}, {"id": "ind-04", "ix": "樣本 04", "name": "張子俊 · 應屆畢業", "cn": "薄文件新移民", "en": "Thin-file new arrival", "icon": "M12 14l9-5-9-5-9 5 9 5z", "tier": "low", "expected_grade": "J", "profile": {"type": "individual", "name": "CHEUNG TSZ CHUN", "name_cn": "張子俊", "hkid": "D294817(8)", "dob_year": 2002, "dob": "2002-03-30", "occupation": "Marketing 助理 · 1 年", "income_hkd": 22000, "loan_amount": 60000, "loan_term_months": 12, "loan_purpose": "信用建立", "id_issue_date": "2024-05-08", "id_issue_place": "HKSAR · Immigration Department (new arrival)", "nationality": "Chinese (HKSAR · new)", "marital": "未婚 · Single", "dependants": 0, "residence_status": "與家人同住 · With family · 1 yr", "education": "Bachelor of Business · PolyU · 2024", "languages": ["Cantonese", "English"], "biometric": {"face_match_score": 0.962, "liveness_score": 0.978, "last_verified": "2026-06-11T11:08:00+08:00", "verifier": "BlueBull eKYC v2.1", "id_chip_authentic": true, "face_photo_age_est": 24, "device": "iPhone 13 · iOS 17.5", "ip_country": "HKG", "geo_match": true}, "digital_footprint": {"email_accounts": 3, "social_verified": 2, "phone_career_yrs": 2, "address_stability": "Thin file · 1 address on file", "vpn_or_tor": false, "device_count": 1}}}];
+const INSTITUTION_SAMPLES = [{"id": "ins-01", "ix": "樣本 01", "name": "順馳物流控股", "cn": "物流倉儲組合", "en": "Logistics portfolio", "icon": "M3 7h18v10H3zM7 7V4h10v3", "tier": "high", "expected_grade": "A", "profile": {"type": "institution", "name": "Shun Chi Logistics Holdings Ltd", "name_cn": "順馳物流控股有限公司", "br_no": "BR-62819403", "br_issue_date": "2012-04-18", "br_status": "Valid · In-force", "cr_no": "CR-1729384", "incorporation_date": "2012-03-30", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "20/F, TOWER 535, 535 CAUSEWAY ROAD, CAUSEWAY BAY, HONG KONG", "registered_capital_hkd": 10000000, "paid_up_capital_hkd": 10000000, "logo_color": "#C7A951", "logo_initials": "SC", "industry": "物流倉儲", "industry_code": "ISIC 4923 · Freight transport by road", "industry_risk": "Medium", "esg_score": 62, "loan_amount": 25000000, "loan_term_months": 36, "loan_purpose": "車隊擴張", "directors": [{"name": "WONG CHI KEUNG", "name_cn": "王志强", "role": "Director · Chairman", "appt_date": "2012-03-30", "shareholding_pct": 45, "nationality": "HKSAR", "other_directorships": 3, "pep": false, "ubo": true, "hkid": "A334829(1)"}, {"name": "CHENG MEI FUN", "name_cn": "鄭美芬", "role": "Director · CEO", "appt_date": "2012-03-30", "shareholding_pct": 30, "nationality": "HKSAR", "other_directorships": 2, "pep": false, "ubo": true, "hkid": "E712449(6)"}, {"name": "LEE KA WAH", "name_cn": "李嘉華", "role": "Director · CFO", "appt_date": "2014-08-12", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": false, "hkid": "G182746(0)"}], "shareholders": [{"name": "WONG CHI KEUNG", "name_cn": "王志强", "shares_pct": 45, "class": "Ordinary"}, {"name": "CHENG MEI FUN", "name_cn": "鄭美芬", "shares_pct": 30, "class": "Ordinary"}, {"name": "Pacific Logistic Capital LP", "shares_pct": 20, "class": "Preference"}, {"name": "Employee ESOP", "shares_pct": 5, "class": "Ordinary · options"}], "litigation": [{"case_id": "HCPI 1234/2024", "court": "High Court · PI", "year": 2024, "role": "Defendant", "type": "Breach of contract · fleet lease", "claim_hkd": 2500000, "status": "Settled · 2025-02-14", "severity": "low", "summary": "Sub-lease dispute, settled at HK$1.4M"}], "charges": [{"id": "CHG-001", "type": "All-monies mortgage", "lender": "HSBC Hong Kong", "amount_hkd": 50000000, "registered": "2023-08-15", "status": "Outstanding", "collateral": "Property · 20/F, TOWER 535, Causeway Bay"}, {"id": "CHG-002", "type": "Floating charge", "lender": "Hang Seng Bank", "amount_hkd": 30000000, "registered": "2021-03-22", "status": "Outstanding", "collateral": "All assets · undertakings · goodwill"}], "relationships": [{"name": "Shun Chi Logistics (Shenzhen) Ltd", "name_cn": "顺驰物流(深圳)有限公司", "type": "Subsidiary · 100%", "country": "PRC · Shenzhen", "incorporation": "2014-11-22", "cr_no": "PRC-91440300MA5G7X9P3K", "purpose": "Cross-border fleet operations"}, {"name": "SC Property Holdings Ltd", "name_cn": "順馳物業控股有限公司", "type": "Subsidiary · 100%", "country": "BVI", "incorporation": "2013-06-08", "cr_no": "BVI-198472", "purpose": "Warehouse property holding"}, {"name": "Greater Bay Freight Alliance", "name_cn": "大灣區貨運聯盟", "type": "JV · 30%", "country": "HKG", "incorporation": "2020-09-15", "cr_no": "JV-2020-0917", "purpose": "Consortium for cross-border consolidation"}], "financials": {"revenue_3y": [280000000, 265000000, 248000000], "ebitda_margin": 0.142, "current_ratio": 1.85, "debt_to_equity": 0.62, "interest_coverage": 6.4, "auditor": "KPMG · unqualified", "last_audit_date": "2025-12-15"}, "banking": [{"bank": "HSBC Hong Kong", "type": "Primary · Operating", "since": "2012", "facilities": "Term loan HK$50M + revolving credit HK$30M"}, {"bank": "Hang Seng Bank", "type": "Trade finance", "since": "2015", "facilities": "Letter of credit · trust receipt"}, {"bank": "Bank of China (HK)", "type": "Cross-border RMB", "since": "2018", "facilities": "GBA bridge facility HK$25M"}], "headcount": 142, "headcount_trend": "+8% YoY", "fleet_size": "82 trucks · 14 warehouses · 4 cross-border depots"}}, {"id": "ins-02", "ix": "樣本 02", "name": "美心餐飲集團", "cn": "連鎖餐飲組合", "en": "F&B chain portfolio", "icon": "M5 21V8l7-4 7 4v13M9 21v-6h6v6M9 11h.01M15 11h.01", "tier": "mid", "expected_grade": "C", "profile": {"type": "institution", "name": "Maxim's Caterers Ltd", "name_cn": "美心餐飲集團有限公司", "br_no": "BR-71849205", "br_issue_date": "1998-02-04", "br_status": "Valid · In-force", "cr_no": "CR-0612847", "incorporation_date": "1998-01-22", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "12/F, MAXIM'S CENTRE, 17-21 CONNAUGHT ROAD CENTRAL, HONG KONG", "registered_capital_hkd": 50000000, "paid_up_capital_hkd": 50000000, "logo_color": "#B91C1C", "logo_initials": "MX", "industry": "餐飲零售", "industry_code": "ISIC 5610 · Restaurants & mobile food", "industry_risk": "Medium-High", "esg_score": 54, "loan_amount": 18000000, "loan_term_months": 24, "loan_purpose": "門市翻新", "directors": [{"name": "WU WING HUNG", "name_cn": "鄔永鴻", "role": "Director · Chairman & CEO", "appt_date": "1998-01-22", "shareholding_pct": 38, "nationality": "HKSAR", "other_directorships": 7, "pep": false, "ubo": true, "hkid": "D123456(7)"}, {"name": "WU YUEN MAN", "name_cn": "鄔婉雯", "role": "Director · Deputy CEO", "appt_date": "2005-04-11", "shareholding_pct": 22, "nationality": "HKSAR", "other_directorships": 4, "pep": false, "ubo": true, "hkid": "D654321(2)"}, {"name": "CHAN TAK SHING", "name_cn": "陳德成", "role": "Director · COO", "appt_date": "2010-09-03", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": false, "hkid": "E987654(3)"}, {"name": "LIU KAR FAI", "name_cn": "廖家輝", "role": "Independent NED", "appt_date": "2018-06-15", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 5, "pep": false, "ubo": false, "hkid": "G456123(8)"}, {"name": "CHOW PUI YI", "name_cn": "周佩儀", "role": "Director · CFO", "appt_date": "2014-11-20", "shareholding_pct": 0, "nationality": "HKSAR", "other_directorships": 2, "pep": false, "ubo": false, "hkid": "E321987(4)"}], "shareholders": [{"name": "WU WING HUNG", "name_cn": "鄔永鴻", "shares_pct": 38, "class": "Ordinary"}, {"name": "WU YUEN MAN", "name_cn": "鄔婉雯", "shares_pct": 22, "class": "Ordinary"}, {"name": "Maxim Holdings (PTC) Ltd", "shares_pct": 25, "class": "Ordinary · family trust"}, {"name": "Public float · institutional", "shares_pct": 15, "class": "Ordinary"}], "litigation": [{"case_id": "DCCC 891/2023", "court": "District Court · CC", "year": 2023, "role": "Defendant", "type": "Food safety · Centre for Food Safety prosecution", "claim_hkd": 800000, "status": "Conviction · fined HK$120K · 2024-03", "severity": "medium", "summary": "FSS contravention at Tuen Mun branch; corrective action complete"}, {"case_id": "HCPI 5821/2022", "court": "High Court · PI", "year": 2022, "role": "Defendant", "type": "Wrongful dismissal · former GM", "claim_hkd": 6500000, "status": "Dismissed · 2024-08", "severity": "low", "summary": "Claim dismissed with costs awarded to defendant"}, {"case_id": "LAB 142/2025", "court": "Labour Tribunal", "year": 2025, "role": "Defendant", "type": "Severance dispute · 3 kitchen staff", "claim_hkd": 420000, "status": "Settled · HK$280K · 2025-04", "severity": "low", "summary": "Routine, settled at mediation"}], "charges": [{"id": "CHG-101", "type": "All-monies mortgage", "lender": "Standard Chartered HK", "amount_hkd": 80000000, "registered": "2019-06-10", "status": "Outstanding", "collateral": "Property · 12/F, Maxim's Centre, Central"}], "relationships": [{"name": "Maxim Bakeries (HK) Ltd", "name_cn": "美心餅店有限公司", "type": "Subsidiary · 100%", "country": "HKSAR", "incorporation": "2001-08-14", "cr_no": "CR-3382014", "purpose": "Bakery operations · 240 outlets"}, {"name": "MX Catering (Macau) Ltd", "name_cn": "美心餐飲(澳門)有限公司", "type": "Subsidiary · 80%", "country": "Macau", "incorporation": "2010-03-08", "cr_no": "MACAU-28147", "purpose": "Macau franchise operations"}, {"name": "Great Wall Foodcourt JV", "name_cn": "長城美食廣場合資", "type": "JV · 50%", "country": "PRC · Shanghai", "incorporation": "2018-04-22", "cr_no": "PRC-91310115MA1K3X8Y", "purpose": "Mainland food court operator"}, {"name": "Wu Family Office Ltd", "name_cn": "鄔氏家族辦公室有限公司", "type": "Common director · related", "country": "BVI", "incorporation": "2015-12-01", "cr_no": "BVI-338291", "purpose": "Family wealth vehicle · UBO holding"}], "financials": {"revenue_3y": [450000000, 422000000, 398000000], "ebitda_margin": 0.094, "current_ratio": 1.42, "debt_to_equity": 0.91, "interest_coverage": 4.1, "auditor": "BDO · unqualified", "last_audit_date": "2025-11-28"}, "banking": [{"bank": "Standard Chartered HK", "type": "Primary · Operating", "since": "1998", "facilities": "Term loan HK$80M + revolving HK$40M"}, {"bank": "HSBC Hong Kong", "type": "Trade finance", "since": "2002", "facilities": "Multi-currency cash pool"}], "headcount": 2840, "headcount_trend": "-3% YoY (post-rationalisation)", "fleet_size": "185 outlets HK + 24 Macau + 8 PRC JV"}}, {"id": "ins-03", "ix": "樣本 03", "name": "新創科技公司", "cn": "初創 · SaaS", "en": "Tech startup", "icon": "M9 4h6v4H9zM5 8h14v12H5z", "tier": "low", "expected_grade": "F", "profile": {"type": "institution", "name": "NovaTech Solutions Ltd", "name_cn": "新創科技有限公司", "br_no": "BR-92184756", "br_issue_date": "2024-08-22", "br_status": "Valid · In-force", "cr_no": "CR-3382741", "incorporation_date": "2024-07-15", "incorporation_place": "Hong Kong", "company_type": "Private limited company", "status": "Active · Live · Filing up to date", "registered_office": "UNIT 1208, 12/F, TOWER B, 22 YIP HING STREET, WONG CHUK HANG, HONG KONG", "registered_capital_hkd": 1000000, "paid_up_capital_hkd": 250000, "logo_color": "#3B82F6", "logo_initials": "NT", "industry": "軟件 / SaaS", "industry_code": "ISIC 5820 · Software publishing", "industry_risk": "High (early-stage)", "esg_score": 71, "loan_amount": 3000000, "loan_term_months": 18, "loan_purpose": "現金流週轉", "directors": [{"name": "CHAN HO TIN", "name_cn": "陳浩天", "role": "Director · Co-founder & CTO", "appt_date": "2024-07-15", "shareholding_pct": 48, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": true, "hkid": "K771203(4)"}, {"name": "LI ZI YING", "name_cn": "李子瑩", "role": "Director · Co-founder & CEO", "appt_date": "2024-07-15", "shareholding_pct": 32, "nationality": "HKSAR", "other_directorships": 1, "pep": false, "ubo": true, "hkid": "K884201(7)"}], "shareholders": [{"name": "CHAN HO TIN", "name_cn": "陳浩天", "shares_pct": 48, "class": "Ordinary"}, {"name": "LI ZI YING", "name_cn": "李子瑩", "shares_pct": 32, "class": "Ordinary"}, {"name": "HK Tech Seed Fund I LP", "shares_pct": 15, "class": "Preference · Series Seed"}, {"name": "Cyberport Incubation Holding", "shares_pct": 5, "class": "Ordinary · non-voting"}], "litigation": [], "charges": [], "relationships": [{"name": "NovaTech (Shenzhen) Technology Co Ltd", "name_cn": "新创科技(深圳)有限公司", "type": "Subsidiary · 100% (WFOE)", "country": "PRC · Shenzhen", "incorporation": "2024-12-10", "cr_no": "PRC-91440300MAE4Q1X2N", "purpose": "Engineering team · cost base"}], "financials": {"revenue_3y": [0, 0, 8500000], "ebitda_margin": -0.42, "current_ratio": 0.85, "debt_to_equity": 0, "interest_coverage": 0, "auditor": "n/a (revenue < HK$10M · audit-exempt)", "last_audit_date": "n/a"}, "banking": [{"bank": "ZA Bank", "type": "Operating account", "since": "2024", "facilities": "Virtual bank · HK$500K operating line"}], "headcount": 9, "headcount_trend": "+3 in 6 mo (5 HK + 4 SZ)", "fleet_size": "Cloud SaaS · 47 paying customers · ARR HK$8.5M"}}, {"id": "ins-04", "ix": "樣本 04", "name": "某個人信貸組合", "cn": "消費金融 NPL 包", "en": "Consumer NPL pool", "icon": "M3 3h18v18H3zM3 9h18M9 21V9", "tier": "mid", "expected_grade": "D", "profile": {"type": "institution", "name": "Pacific Consumer Finance Pool 2026-A", "name_cn": "太平洋消費金融資產組合 2026-A", "br_no": "POOL-2026-A-014", "br_issue_date": "2026-02-01", "br_status": "Valid · SPV · ring-fenced", "cr_no": "SPV-2026-A-014", "incorporation_date": "2026-01-22", "incorporation_place": "Cayman Islands · SPV", "company_type": "Segregated portfolio company · SPV", "status": "Active · Live · ring-fenced", "registered_office": "C/O WALKERS CORPORATE LIMITED, CAYMAN CORPORATE CENTRE, 27 HOSPITAL ROAD, GEORGE TOWN, GRAND CAYMAN", "registered_capital_hkd": 100000, "paid_up_capital_hkd": 100000, "logo_color": "#6B7280", "logo_initials": "PC", "industry": "消費金融 NPL", "industry_code": "ISIC 6492 · Other credit granting", "industry_risk": "High (NPL portfolio)", "esg_score": 48, "loan_amount": 48500000, "loan_term_months": 12, "loan_purpose": "資產包收購", "directors": [{"name": "PTC Corporate Services (Cayman) Ltd", "name_cn": "—", "role": "Corporate Director (sole)", "appt_date": "2026-01-22", "shareholding_pct": 0, "nationality": "Cayman", "other_directorships": 142, "pep": false, "ubo": false, "hkid": "n/a"}], "shareholders": [{"name": "Pacific Consumer Finance Holdings", "shares_pct": 100, "class": "Ordinary · SPV beneficiary"}], "litigation": [{"case_id": "Pool-level · 14,832 underlying accounts", "court": "Various · underlying", "year": 2025, "role": "Creditor (assigned)", "type": "Consumer NPL · assigned", "claim_hkd": 48500000, "status": "Active collection · 23% recovery YTD", "severity": "high", "summary": "NPL pool: 14,832 unsecured personal loans · avg balance HK$3,267 · avg DPD 187 days at cut-off"}], "charges": [{"id": "CHG-POOL-001", "type": "Pledge over receivables", "lender": "Lead arranger · HSBC", "amount_hkd": 60000000, "registered": "2026-02-10", "status": "Outstanding", "collateral": "Pool assets · 14,832 underlying unsecured personal loans"}], "relationships": [{"name": "Pacific Consumer Finance Holdings", "name_cn": "—", "type": "Originator · parent (100%)", "country": "BVI", "incorporation": "2018-03-15", "cr_no": "BVI-228471", "purpose": "Originator of pool · retains servicing"}, {"name": "HSBC Institutional Trust Services", "name_cn": "—", "type": "Trustee", "country": "HKSAR", "incorporation": "1972-01-01", "cr_no": "TR-0001", "purpose": "Pool trustee · NAV verification · waterfall admin"}, {"name": "Pacific Servicing (HK) Ltd", "name_cn": "太平洋催收服務有限公司", "type": "Servicer", "country": "HKSAR", "incorporation": "2019-06-22", "cr_no": "CR-2918472", "purpose": "Collections agency · 24-month servicing agreement"}], "financials": {"revenue_3y": [0, 0, 0], "ebitda_margin": 0, "current_ratio": "n/a · pool", "debt_to_equity": "n/a · pool", "interest_coverage": "n/a · pool", "auditor": "PwC · pool audit · unqualified", "last_audit_date": "2026-04-30"}, "banking": [{"bank": "HSBC Hong Kong", "type": "Pool account · segregated", "since": "2026", "facilities": "Waterfall account · HK$60M facility"}], "headcount": 0, "headcount_trend": "n/a (serviced externally)", "fleet_size": "14,832 underlying accounts · 23% recovery YTD · WAC 187 DPD"}}];
 
 // ============================================================
 // Credit report generator (JS port of credit_sample.py)
@@ -1964,20 +2306,168 @@ function generateReport() {
   };
 }
 
+
+function generateInstitutionReport() {
+  const sc = activeScenario;
+  const p = sc.profile;
+  // Build ref like for institution (longer tag)
+  const mm = String(today().getMonth() + 1).padStart(2, '0');
+  const dd = String(today().getDate()).padStart(2, '0');
+  const refTail = `CORP-${dd}${mm}${randInt(10,99)}x${randInt(100,999)}x${randInt(10,99)}xZ${randInt(10,99)}/${randInt(100,999)}`;
+
+  // Score derived from tier (same band as before)
+  const t = sc.tier;
+  let score, grade;
+  if (t === "high") { score = randInt(3300, 3850); grade = gradeForScore(score); }
+  else if (t === "mid") { score = randInt(2400, 3300); grade = gradeForScore(score); }
+  else { score = randInt(1100, 2400); grade = gradeForScore(score); }
+
+  // Pull the live scenario loan into an "inquiry" entry
+  const inquiries = [];
+  if (p.loan_amount) {
+    inquiries.push({
+      lender: "ICLNet² Decision Engine",
+      date: today(),
+      type: p.loan_purpose || "Loan facility application",
+      amount: p.loan_amount,
+      purpose: "Live application",
+      kind: "application",
+    });
+  }
+
+  return {
+    type: 'institution',
+    scenario: sc,
+    name: p.name,
+    name_cn: p.name_cn || '',
+    br_no: p.br_no || '—',
+    cr_no: p.cr_no || '—',
+    br_issue_date: p.br_issue_date || '',
+    br_status: p.br_status || '',
+    incorporation_date: p.incorporation_date || '',
+    incorporation_place: p.incorporation_place || '',
+    company_type: p.company_type || '',
+    status: p.status || '',
+    registered_office: p.registered_office || '',
+    registered_capital_hkd: p.registered_capital_hkd || 0,
+    paid_up_capital_hkd: p.paid_up_capital_hkd || 0,
+    logo_color: p.logo_color || '#888',
+    logo_initials: p.logo_initials || (p.name || '?').slice(0,2).toUpperCase(),
+    industry: p.industry || '',
+    industry_code: p.industry_code || '',
+    industry_risk: p.industry_risk || '',
+    esg_score: p.esg_score || 0,
+    loan_amount: p.loan_amount || 0,
+    loan_purpose: p.loan_purpose || '',
+    loan_term_months: p.loan_term_months || 0,
+    directors: p.directors || [],
+    shareholders: p.shareholders || [],
+    litigation: p.litigation || [],
+    charges: p.charges || [],
+    relationships: p.relationships || [],
+    financials: p.financials || {},
+    banking: p.banking || [],
+    headcount: p.headcount || 0,
+    headcount_trend: p.headcount_trend || '',
+    fleet_size: p.fleet_size || '',
+    score, grade,
+    inquiries,
+    reportDate: today(),
+    refId: refTail,
+  };
+}
+
+function fmtHKD(n) {
+  if (n == null) return "—";
+  if (n === 0) return "HK$ 0";
+  if (n >= 1e6) return "HK$ " + (n / 1e6).toFixed(1) + "M";
+  if (n >= 1e3) return "HK$ " + Math.round(n / 1e3) + "K";
+  return "HK$ " + n;
+}
+function fmtHKDpct(n) {
+  if (n == null || isNaN(n)) return "—";
+  return "HK$ " + Number(n).toLocaleString('en-US');
+}
+
+function severityBadge(s) {
+  if (s === 'high') return '<span class="sev sev-high">HIGH</span>';
+  if (s === 'medium') return '<span class="sev sev-mid">MED</span>';
+  return '<span class="sev sev-low">LOW</span>';
+}
+
+function corpSeal(r, size) {
+  size = size || 56;
+  return `<div class="corp-seal" style="width:${size}px;height:${size}px;background:${r.logo_color}">
+    <div class="corp-seal-ring"></div>
+    <div class="corp-seal-tx">${escapeHtml(r.logo_initials)}</div>
+  </div>`;
+}
+
+
 // ---------- Rendering ----------
 
 function renderSummary(r) {
   const utilClass = r.utilization > 0.5 ? 'v-warn' : 'v-good';
+  // Biometric block (only when scenario is active)
+  const sc = activeScenario;
+  const p = sc && sc.profile;
+  const bio = p && p.biometric;
+  const df = p && p.digital_footprint;
+  let bioBlock = '';
+  if (bio) {
+    const match = bio.face_match_score ? Math.round(bio.face_match_score * 100) : null;
+    const live = bio.liveness_score ? Math.round(bio.liveness_score * 100) : null;
+    const chip = bio.id_chip_authentic;
+    bioBlock = `
+  <div class="bio-stamp">
+    <div class="bio-head">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      <span class="cjk">eKYC 生物識別驗證已通過</span>
+      <span class="en">Biometric verification · eKYC v2.1</span>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-cell">
+        <div class="bio-n ${match && match >= 95 ? 'v-good' : 'v-warn'}">${match != null ? match + '%' : '—'}</div>
+        <div class="bio-l cjk">人臉比對 / Face match</div>
+      </div>
+      <div class="bio-cell">
+        <div class="bio-n ${live && live >= 95 ? 'v-good' : 'v-warn'}">${live != null ? live + '%' : '—'}</div>
+        <div class="bio-l cjk">活體檢測 / Liveness</div>
+      </div>
+      <div class="bio-cell">
+        <div class="bio-n ${chip ? 'v-good' : 'v-warn'}">${chip ? '✓' : '✗'}</div>
+        <div class="bio-l cjk">晶片真偽 / Chip</div>
+      </div>
+      <div class="bio-cell">
+        <div class="bio-n v-good">${bio.face_photo_age_est || '—'}</div>
+        <div class="bio-l cjk">人臉年齡 / Age est.</div>
+      </div>
+    </div>
+    <div class="bio-foot mono small muted">
+      ${escapeHtml(bio.last_verified || '')} · ${escapeHtml(bio.device || '')} · ${escapeHtml(bio.ip_country || '')}${bio.geo_match === true ? ' · geo ✓' : bio.geo_match ? ' · ' + escapeHtml(bio.geo_match) : ''}
+    </div>
+  </div>`;
+  }
   return `
 <div class="rpt-section">
   <div class="rpt-section-title">信貸報告總覽 / Report Summary</div>
   <div class="rpt-line">以下是閣下於 <b>${fmtDate(r.reportDate)}</b> 的信貸報告總覽。</div>
+
+  ${bioBlock}
 
   <div class="rpt-sub">個人資料 / Personal</div>
   <table class="rpt-table">
     <tr><td class="k">姓名 / Name</td><td class="v">${r.name}</td></tr>
     <tr><td class="k">出生日期 / DOB</td><td class="v">${fmtDate(r.dob)}</td></tr>
     <tr><td class="k">身份證號碼 / HKID</td><td class="v">香港身份證號碼 ${r.hkid}</td></tr>
+    ${p && p.id_issue_date ? `<tr><td class="k">身份證簽發 / Issued</td><td class="v">${escapeHtml(p.id_issue_date)}</td>
+        <td class="k">簽發地 / Place</td><td class="v">${escapeHtml(p.id_issue_place || '')}</td></tr>` : ''}
+    ${p && p.nationality ? `<tr><td class="k">國籍 / Nationality</td><td class="v" colspan="3">${escapeHtml(p.nationality)}</td></tr>` : ''}
+    ${p && (p.marital || p.dependants != null) ? `<tr><td class="k">婚姻 / Marital</td><td class="v">${escapeHtml(p.marital || '—')}</td>
+        <td class="k">受養人 / Dependants</td><td class="v">${p.dependants != null ? p.dependants : '—'}</td></tr>` : ''}
+    ${p && p.residence_status ? `<tr><td class="k">居住狀況 / Residence</td><td class="v" colspan="3">${escapeHtml(p.residence_status)}</td></tr>` : ''}
+    ${p && p.education ? `<tr><td class="k">教育程度 / Education</td><td class="v" colspan="3">${escapeHtml(p.education)}</td></tr>` : ''}
+    ${p && p.languages && p.languages.length ? `<tr><td class="k">語言 / Languages</td><td class="v" colspan="3">${p.languages.map(escapeHtml).join(' · ')}</td></tr>` : ''}
   </table>
 
   <div class="rpt-sub">信貸評分 / Credit Score</div>
@@ -2133,6 +2623,278 @@ function renderInq(r) {
 `;
 }
 
+
+// ---------- Institutional renderers ----------
+
+function renderInstProfile(r) {
+  const f = r.financials || {};
+  const fy0 = (f.revenue_3y && f.revenue_3y[0]) || 0;
+  const fy1 = (f.revenue_3y && f.revenue_3y[1]) || 0;
+  const fy2 = (f.revenue_3y && f.revenue_3y[2]) || 0;
+  // Bar chart for revenue (last 3 years)
+  const maxR = Math.max(fy0, fy1, fy2, 1);
+  function bar(v, label) {
+    const h = Math.max(4, Math.round((v / maxR) * 80));
+    return `<div class="fy-col">
+      <div class="fy-bar" style="height:${h}px"></div>
+      <div class="fy-val">${v ? fmtHKDpct(v) : '—'}</div>
+      <div class="fy-lbl">${label}</div>
+    </div>`;
+  }
+  const yNow = today().getFullYear();
+  const revHtml = (fy0 || fy1 || fy2) ? `<div class="fy-chart">
+    ${bar(fy2, yNow-2)}
+    ${bar(fy1, yNow-1)}
+    ${bar(fy0, yNow)}
+  </div>` : `<div class="muted small">Pool / SPV · revenue n/a</div>`;
+
+  return `
+<div class="rpt-section">
+  <div class="rpt-section-title">公司概要 / Corporate Profile</div>
+
+  <div class="inst-head">
+    ${corpSeal(r, 72)}
+    <div class="inst-head-meta">
+      <div class="inst-name">${escapeHtml(r.name)}</div>
+      <div class="inst-name-cn cjk">${escapeHtml(r.name_cn)}</div>
+      <div class="inst-id-line mono small">${escapeHtml(r.cr_no)} · ${escapeHtml(r.br_no)}</div>
+    </div>
+    <div class="inst-head-grade">
+      <div class="grade-pill grade-${r.grade}">${r.grade}</div>
+      <div class="grade-num mono">${r.score}</div>
+    </div>
+  </div>
+
+  <div class="rpt-sub">法定身份 / Statutory identity</div>
+  <table class="rpt-table">
+    <tr><td class="k">商業登記號 / BR</td><td class="v mono">${escapeHtml(r.br_no)}</td>
+        <td class="k">簽發日期 / Issued</td><td class="v">${escapeHtml(r.br_issue_date)}</td></tr>
+    <tr><td class="k">公司註冊 / CR</td><td class="v mono">${escapeHtml(r.cr_no)}</td>
+        <td class="k">登記狀態 / BR status</td><td class="v">${escapeHtml(r.br_status)}</td></tr>
+    <tr><td class="k">成立日期 / Incorporation</td><td class="v">${escapeHtml(r.incorporation_date)}</td>
+        <td class="k">成立地 / Place</td><td class="v">${escapeHtml(r.incorporation_place)}</td></tr>
+    <tr><td class="k">公司類別 / Type</td><td class="v">${escapeHtml(r.company_type)}</td>
+        <td class="k">申報狀態 / Status</td><td class="v v-strong">${escapeHtml(r.status)}</td></tr>
+    <tr><td class="k">註冊資本 / Reg capital</td><td class="v">${fmtHKDpct(r.registered_capital_hkd)}</td>
+        <td class="k">已繳資本 / Paid-up</td><td class="v">${fmtHKDpct(r.paid_up_capital_hkd)}</td></tr>
+    <tr><td class="k">註冊地址 / Office</td><td class="v" colspan="3">${escapeHtml(r.registered_office)}</td></tr>
+  </table>
+
+  <div class="rpt-sub">業務概覽 / Business overview</div>
+  <table class="rpt-table">
+    <tr><td class="k">行業 / Industry</td><td class="v">${escapeHtml(r.industry)}</td>
+        <td class="k">行業編碼 / Code</td><td class="v mono small">${escapeHtml(r.industry_code)}</td></tr>
+    <tr><td class="k">行業風險 / Industry risk</td><td class="v"><b>${escapeHtml(r.industry_risk)}</b></td>
+        <td class="k">ESG 評分 / ESG</td><td class="v">${r.esg_score} / 100</td></tr>
+    <tr><td class="k">員工數 / Headcount</td><td class="v">${r.headcount || '—'} <span class="muted small">${escapeHtml(r.headcount_trend)}</span></td>
+        <td class="k">營運規模 / Scale</td><td class="v">${escapeHtml(r.fleet_size)}</td></tr>
+  </table>
+
+  <div class="rpt-sub">營業額趨勢 / Revenue trend (3 yrs)</div>
+  ${revHtml}
+
+  <div class="rpt-sub">本次信貸申請 / This credit application</div>
+  <table class="rpt-table">
+    <tr><td class="k">申請金額 / Facility</td><td class="v v-strong">${fmtHKDpct(r.loan_amount)}</td>
+        <td class="k">年期 / Term</td><td class="v">${r.loan_term_months} months</td></tr>
+    <tr><td class="k">用途 / Purpose</td><td class="v" colspan="3">${escapeHtml(r.loan_purpose)}</td></tr>
+  </table>
+</div>
+`;
+}
+
+function renderInstDirectors(r) {
+  const dirs = r.directors || [];
+  const dirRows = dirs.map(d => `
+    <tr>
+      <td class="v">
+        <div class="dir-name">${escapeHtml(d.name)}</div>
+        <div class="dir-name-cn cjk muted small">${escapeHtml(d.name_cn || '')}</div>
+      </td>
+      <td class="v"><span class="role-tag">${escapeHtml(d.role)}</span></td>
+      <td class="v">${escapeHtml(d.appt_date)}</td>
+      <td class="v">${d.shareholding_pct || 0}%</td>
+      <td class="v">${escapeHtml(d.nationality)}</td>
+      <td class="v">${d.other_directorships || 0}</td>
+      <td class="v">${d.ubo ? '<span class="ubo-badge">UBO</span>' : ''}</td>
+    </tr>
+  `).join('');
+
+  const sh = r.shareholders || [];
+  const shRows = sh.map(s => `
+    <tr>
+      <td class="v">
+        <div class="dir-name">${escapeHtml(s.name)}</div>
+        <div class="dir-name-cn cjk muted small">${escapeHtml(s.name_cn || '')}</div>
+      </td>
+      <td class="v">${s.shares_pct}%</td>
+      <td class="v">${escapeHtml(s.class)}</td>
+    </tr>
+  `).join('');
+
+  return `
+<div class="rpt-section">
+  <div class="rpt-section-title">董事與股東 / Directors & Shareholders</div>
+  <div class="rpt-line">以下為公司註冊處及商業登記署的最新申報紀錄，截至 ${fmtDate(r.reportDate)}。</div>
+
+  <div class="rpt-sub">董事會 / Board of Directors (${dirs.length})</div>
+  <table class="rpt-table rpt-dir">
+    <thead><tr><th>姓名 / Name</th><th>職位 / Role</th><th>委任 / Appt</th><th>持股</th><th>國籍</th><th>其他董事</th><th>UBO</th></tr></thead>
+    <tbody>${dirRows || '<tr><td class="muted" colspan="7">無董事紀錄</td></tr>'}</tbody>
+  </table>
+
+  <div class="rpt-sub" style="margin-top:24px;">股東結構 / Shareholding (${sh.length})</div>
+  <table class="rpt-table rpt-dir">
+    <thead><tr><th>股東 / Shareholder</th><th>持股 %</th><th>股份類別 / Class</th></tr></thead>
+    <tbody>${shRows || '<tr><td class="muted" colspan="3">無股東紀錄</td></tr>'}</tbody>
+  </table>
+
+  <div class="rpt-line muted small" style="margin-top:16px;">
+    UBO = Ultimate Beneficial Owner · 最終實益擁有人 · 持股 ≥ 25% 或擁有控制權。
+  </div>
+</div>
+`;
+}
+
+function renderInstLitigation(r) {
+  const cases = r.litigation || [];
+  const caseRows = cases.map(c => `
+    <tr>
+      <td class="v mono small">${escapeHtml(c.case_id)}</td>
+      <td class="v">${escapeHtml(c.court)}</td>
+      <td class="v">${c.year}</td>
+      <td class="v">${escapeHtml(c.role)}</td>
+      <td class="v">${escapeHtml(c.type)}</td>
+      <td class="v">${fmtHKDpct(c.claim_hkd)}</td>
+      <td class="v">${severityBadge(c.severity)} ${escapeHtml(c.status)}</td>
+    </tr>
+  `).join('');
+
+  // Severity summary
+  const high = cases.filter(c => c.severity === 'high').length;
+  const mid = cases.filter(c => c.severity === 'medium').length;
+  const low = cases.filter(c => c.severity === 'low').length;
+
+  return `
+<div class="rpt-section">
+  <div class="rpt-section-title">訴訟及公眾紀錄 / Litigation & Public Records</div>
+  <div class="rpt-line">以下為各級法院、勞資審裁處、食物安全及監管機構對本機構的紀錄。</div>
+
+  <div class="lit-summary">
+    <div class="lit-cell"><div class="lit-n">${cases.length}</div><div class="lit-l cjk">案件總數</div></div>
+    <div class="lit-cell lit-high"><div class="lit-n">${high}</div><div class="lit-l cjk">高風險</div></div>
+    <div class="lit-cell lit-mid"><div class="lit-n">${mid}</div><div class="lit-l cjk">中風險</div></div>
+    <div class="lit-cell lit-low"><div class="lit-n">${low}</div><div class="lit-l cjk">低風險</div></div>
+  </div>
+
+  <table class="rpt-table rpt-lit">
+    <thead><tr><th>案件編號</th><th>法院 / 機構</th><th>年份</th><th>身份</th><th>性質</th><th>申索金額</th><th>狀態 / 嚴重度</th></tr></thead>
+    <tbody>${caseRows || '<tr><td class="muted" colspan="7">無訴訟紀錄</td></tr>'}</tbody>
+  </table>
+
+  ${cases.length ? `<div class="rpt-sub" style="margin-top:24px;">案件摘要 / Case summaries</div>
+  <ol class="rpt-list">
+    ${cases.map(c => `<li><b>${escapeHtml(c.case_id)}</b> · ${escapeHtml(c.summary || c.type)}</li>`).join('')}
+  </ol>` : ''}
+</div>
+`;
+}
+
+function renderInstCharges(r) {
+  const chgs = r.charges || [];
+  const chgRows = chgs.map(c => `
+    <tr>
+      <td class="v mono small">${escapeHtml(c.id)}</td>
+      <td class="v">${escapeHtml(c.type)}</td>
+      <td class="v">${escapeHtml(c.lender)}</td>
+      <td class="v">${fmtHKDpct(c.amount_hkd)}</td>
+      <td class="v">${escapeHtml(c.registered)}</td>
+      <td class="v">${escapeHtml(c.status)}</td>
+      <td class="v">${escapeHtml(c.collateral)}</td>
+    </tr>
+  `).join('');
+
+  const bk = r.banking || [];
+  const bkRows = bk.map(b => `
+    <tr>
+      <td class="v">${escapeHtml(b.bank)}</td>
+      <td class="v">${escapeHtml(b.type)}</td>
+      <td class="v">${escapeHtml(String(b.since))}</td>
+      <td class="v">${escapeHtml(b.facilities || '—')}</td>
+    </tr>
+  `).join('');
+
+  const totalChg = chgs.reduce((s, c) => s + (c.amount_hkd || 0), 0);
+
+  return `
+<div class="rpt-section">
+  <div class="rpt-section-title">押記及銀行融資 / Charges & Banking Facilities</div>
+  <div class="rpt-line">以下為公司註冊處登記的押記紀錄及主要銀行融資安排。</div>
+
+  <div class="rpt-sub">押記 / Charges (${chgs.length})</div>
+  <table class="rpt-table rpt-chg">
+    <thead><tr><th>編號</th><th>種類</th><th>債權人</th><th>金額</th><th>登記日</th><th>狀態</th><th>抵押品</th></tr></thead>
+    <tbody>${chgRows || '<tr><td class="muted" colspan="7">無押記紀錄</td></tr>'}</tbody>
+    ${chgs.length ? `<tfoot><tr><td colspan="3" class="k v-strong">押記總額 / Total encumbrance</td><td class="v v-strong">${fmtHKDpct(totalChg)}</td><td colspan="3" class="muted small">已登記並未解除</td></tr></tfoot>` : ''}
+  </table>
+
+  <div class="rpt-sub" style="margin-top:24px;">主要銀行 / Principal bankers (${bk.length})</div>
+  <table class="rpt-table rpt-chg">
+    <thead><tr><th>銀行</th><th>關係</th><th>合作始於</th><th>融資安排</th></tr></thead>
+    <tbody>${bkRows || '<tr><td class="muted" colspan="4">無銀行關係紀錄</td></tr>'}</tbody>
+  </table>
+</div>
+`;
+}
+
+function renderInstRelated(r) {
+  const rels = r.relationships || [];
+  // Group by relationship type
+  const groups = {
+    parent: rels.filter(x => /parent|控股|originator/i.test(x.type)),
+    sub: rels.filter(x => /subsidiary|100/i.test(x.type)),
+    jv: rels.filter(x => /JV|合資|joint/i.test(x.type)),
+    other: rels.filter(x => /Common|trustee|servicer|related/i.test(x.type) && !/parent|控股|originator/i.test(x.type)),
+  };
+
+  function relCard(x) {
+    return `<div class="rel-card">
+      <div class="rel-name">${escapeHtml(x.name)}</div>
+      <div class="rel-name-cn cjk muted small">${escapeHtml(x.name_cn || '')}</div>
+      <div class="rel-type">${escapeHtml(x.type)}</div>
+      <div class="rel-meta">
+        <span class="mono small">${escapeHtml(x.country || '')}</span>
+        <span class="muted small">· 成立 ${escapeHtml(x.incorporation || '')}</span>
+      </div>
+      <div class="rel-cr mono small">${escapeHtml(x.cr_no || '')}</div>
+      <div class="rel-purpose muted small cjk">${escapeHtml(x.purpose || '')}</div>
+    </div>`;
+  }
+
+  function section(title, arr) {
+    if (!arr.length) return '';
+    return `<div class="rel-group">
+      <div class="rel-group-title cjk">${title} (${arr.length})</div>
+      <div class="rel-cards">${arr.map(relCard).join('')}</div>
+    </div>`;
+  }
+
+  return `
+<div class="rpt-section">
+  <div class="rpt-section-title">關連方 / Related Parties</div>
+  <div class="rpt-line">以下為本機構的關連公司、附屬機構、合資項目及服務方。供盡職審查 (KYC / CDD) 參考。</div>
+
+  ${section('控股 / Originator', groups.parent)}
+  ${section('附屬 / Subsidiary', groups.sub)}
+  ${section('合資 / Joint venture', groups.jv)}
+  ${section('其他關連 / Other related', groups.other)}
+
+  ${!rels.length ? '<div class="muted">無關連方紀錄</div>' : ''}
+</div>
+`;
+}
+
+
 // Global state
 let currentReport = null;
 let currentTab = 'summary';
@@ -2141,10 +2903,15 @@ function showTab(name) {
   currentTab = name;
   document.querySelectorAll('.rpt-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
   if (!currentReport) return;
-  const map = { summary: renderSummary, personal: renderPersonal, score: renderScore, accounts: renderAccount, inquiries: renderInq };
-  document.getElementById('rptBody').innerHTML = map[name](currentReport);
-  const pageNums = { summary: 1, personal: 2, score: 3, accounts: 4, inquiries: 5 };
-  document.getElementById('rptPage').textContent = pageNums[name];
+  const indMap = { summary: renderSummary, personal: renderPersonal, score: renderScore, accounts: renderAccount, inquiries: renderInq };
+  const instMap = { 'inst-profile': renderInstProfile, 'inst-directors': renderInstDirectors, 'inst-litigation': renderInstLitigation, 'inst-charges': renderInstCharges, 'inst-related': renderInstRelated };
+  const map = currentReport.type === 'institution' ? instMap : indMap;
+  const fn = map[name];
+  document.getElementById('rptBody').innerHTML = fn ? fn(currentReport) : '<div class="muted">No content</div>';
+  const indPages = { summary: 1, personal: 2, score: 3, accounts: 4, inquiries: 5 };
+  const instPages = { 'inst-profile': 1, 'inst-directors': 2, 'inst-litigation': 3, 'inst-charges': 4, 'inst-related': 5 };
+  const pages = currentReport.type === 'institution' ? instPages : indPages;
+  document.getElementById('rptPage').textContent = pages[name] || 1;
   if (currentLang === 'cn' && tradToSimp) applySimpTo(document.getElementById('rptBody'));
 }
 
@@ -2157,12 +2924,41 @@ function clearScenario() {
 }
 
 function loadSample() {
-  const r = generateReport();
+  const isInst = activeScenario && activeScenario.profile && activeScenario.profile.type === 'institution';
+  const r = isInst ? generateInstitutionReport() : generateReport();
   currentReport = r;
+  // Show / hide tab buttons by type
+  document.querySelectorAll('.rpt-tab').forEach(btn => {
+    const kind = btn.dataset.kind;
+    const show = isInst ? (kind === 'inst') : (kind !== 'inst');
+    btn.style.display = show ? '' : 'none';
+  });
+  // Cover content
+  const coverTitle = document.getElementById('coverTitle');
+  const coverName = document.getElementById('coverName');
+  const coverMeta = document.getElementById('coverMeta');
+  const coverSeal = document.getElementById('coverSeal');
+  if (isInst) {
+    coverTitle.textContent = '商業信貸報告 · Commercial Credit Report';
+    coverName.innerHTML = `<b>${escapeHtml(r.name_cn || r.name)}</b><br><span class="mono small">${escapeHtml(r.cr_no)} · ${escapeHtml(r.br_no)}</span>`;
+    coverMeta.textContent = `成立 ${r.incorporation_date} · 報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
+    coverSeal.innerHTML = corpSeal(r, 96);
+    coverSeal.style.display = '';
+    currentTab = 'inst-profile';
+  } else {
+    coverTitle.textContent = '個人信貸報告 · Personal Credit Report';
+    coverName.textContent = `${r.name}，香港身份證號碼 ${r.hkid}`;
+    coverMeta.textContent = `報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
+    coverSeal.style.display = 'none';
+    currentTab = 'summary';
+  }
+  // Make sure currentTab is valid for the new kind
+  const allTabs = isInst
+    ? ['inst-profile', 'inst-directors', 'inst-litigation', 'inst-charges', 'inst-related']
+    : ['summary', 'personal', 'score', 'accounts', 'inquiries'];
+  if (!allTabs.includes(currentTab)) currentTab = allTabs[0];
   document.getElementById('sampleRef').textContent = r.refId;
   document.getElementById('sampleDate').textContent = fmtDate(r.reportDate);
-  document.getElementById('coverName').textContent = `${r.name}，香港身份證號碼 ${r.hkid}`;
-  document.getElementById('coverMeta').textContent = `報告日期 ${fmtDate(r.reportDate)} · 參考編號 ${r.refId}`;
   showTab(currentTab);
 }
 
@@ -2191,7 +2987,84 @@ function fmtHKDShort(n) {
 function renderSampleGrid() {
   const grid = document.getElementById('sampleGrid');
   const data = currentType === 'individual' ? INDIVIDUAL_SAMPLES : INSTITUTION_SAMPLES;
-  grid.innerHTML = data.map(s => `
+  grid.innerHTML = data.map(s => {
+    const p = s.profile;
+    let depthHtml = '';
+    if (currentType === 'individual') {
+      const bio = p.biometric || {};
+      const df = p.digital_footprint || {};
+      const match = bio.face_match_score ? Math.round(bio.face_match_score * 100) : null;
+      const live = bio.liveness_score ? Math.round(bio.liveness_score * 100) : null;
+      const chip = bio.id_chip_authentic;
+      depthHtml = `
+        <div class="sc-depth sc-depth-ind">
+          <div class="sc-row sc-bio">
+            <span class="sc-chip" title="HKID chip authentic">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M7 6V4h10v2"/></svg>
+              ${chip ? 'Chip OK' : 'Chip ✗'}
+            </span>
+            ${match ? `<span class="sc-chip sc-bio-score" title="Face match vs HKID chip photo">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="3.5"/><path d="M5 20v-1a7 7 0 0 1 14 0v1"/></svg>
+              Face ${match}%
+            </span>` : ''}
+            ${live ? `<span class="sc-chip" title="Liveness score">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12a10 10 0 1 1-10-10"/><path d="M22 4 12 14l-3-3"/></svg>
+              Live ${live}%
+            </span>` : ''}
+          </div>
+          <div class="sc-row sc-meta-line">
+            <span class="mono">${escapeHtml(p.hkid || '')}</span>
+            <span class="dot-sep">·</span>
+            <span>${escapeHtml((p.nationality || '').split(' ')[0])}</span>
+          </div>
+          <div class="sc-row sc-meta-line muted small">
+            ${escapeHtml(p.occupation || '')}
+          </div>
+        </div>
+      `;
+    } else {
+      const dir = (p.directors || []).length;
+      const lit = (p.litigation || []).length;
+      const chg = (p.charges || []).length;
+      const rel = (p.relationships || []).length;
+      const yrs = p.years_operating != null ? p.years_operating : (() => {
+        if (!p.incorporation_date) return null;
+        const y = parseInt(p.incorporation_date.slice(0,4));
+        return new Date().getFullYear() - y;
+      })();
+      const sevClass = lit === 0 ? 'sc-sev-low' : lit <= 2 ? 'sc-sev-mid' : 'sc-sev-high';
+      depthHtml = `
+        <div class="sc-depth sc-depth-ins">
+          <div class="sc-row sc-corp-line">
+            <span class="sc-seal" style="background:${p.logo_color || '#888'}">
+              ${escapeHtml(p.logo_initials || (p.name_cn || p.name || '?').slice(0,2))}
+            </span>
+            <span class="sc-corp-id">
+              <span class="mono small">${escapeHtml(p.br_no || p.cr_no || '—')}</span>
+              ${yrs != null ? `<span class="muted small">· 成立 ${yrs} 年</span>` : ''}
+            </span>
+          </div>
+          <div class="sc-row sc-stat-line">
+            <span class="sc-stat" title="Directors / Officers">
+              <span class="sc-stat-n">${dir}</span><span class="sc-stat-l">董事</span>
+            </span>
+            <span class="sc-stat ${sevClass}" title="Litigation records">
+              <span class="sc-stat-n">${lit}</span><span class="sc-stat-l">訴訟</span>
+            </span>
+            <span class="sc-stat" title="Charges / encumbrances">
+              <span class="sc-stat-n">${chg}</span><span class="sc-stat-l">押記</span>
+            </span>
+            <span class="sc-stat" title="Related entities">
+              <span class="sc-stat-n">${rel}</span><span class="sc-stat-l">關連</span>
+            </span>
+          </div>
+          <div class="sc-row sc-meta-line muted small">
+            ${escapeHtml(p.industry || '')}
+          </div>
+        </div>
+      `;
+    }
+    return `
     <button class="sample-card" data-sample-id="${s.id}">
       <div class="sample-card-ix">${s.ix}</div>
       <div class="sample-card-icon">
@@ -2200,6 +3073,7 @@ function renderSampleGrid() {
       <div class="sample-card-name">${escapeHtml(s.name)}</div>
       <div class="sample-card-cn">${escapeHtml(s.cn)}</div>
       <div class="sample-card-en">${escapeHtml(s.en)}</div>
+      ${depthHtml}
       <div class="sample-card-meta">
         <span>申請額 ${fmtHKDShort(s.profile.loan_amount)}</span>
         <span class="sample-card-grade grade-${s.expected_grade}">
@@ -2207,17 +3081,16 @@ function renderSampleGrid() {
         </span>
       </div>
     </button>
-  `).join('');
+    `;
+  }).join('');
   // Wire click handlers
   grid.querySelectorAll('.sample-card').forEach(card => {
     card.addEventListener('click', () => {
-      // Deselect all
       grid.querySelectorAll('.sample-card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
       const id = card.dataset.sampleId;
       currentScenario = data.find(s => s.id === id);
       currentIsCustom = false;
-      // Clear custom form selection
       document.querySelectorAll('.form-field input, .form-field select').forEach(el => {
         el.dataset.dirty = '';
       });
